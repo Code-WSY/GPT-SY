@@ -44,6 +44,10 @@ def sumbit_text(event):
     if selected_mode.get() == "Fine-tuning" and LOAD_BOOL.get() == True:
         load_messages = eval(Load_Content.get())
         if model_use[model_list.get()] == "ChatCompletion":
+            #初始化
+            messages = []
+            selected_mode.set("Prompt-based")
+            LOAD_BOOL.set(False)
             for message in load_messages:
                 messages.append(message)
             # 提问提交到message,并交给GPT回答
@@ -78,14 +82,11 @@ def sumbit_text(event):
     # ----------------------------------普通模式------------------------------------------#
     elif selected_mode.get() == "Prompt-based":
         if model_use[model_list.get()] == "ChatCompletion":
-            #print(messages)  # 对话历史
-            #print(prompts[func_list.get()])  # 选择的功能
+
             # 首次提交
             if len(messages) == 0:
                 messages.append(choice_func(model_list.get(), func_list.get())[0])
             # 中途切换功能：清空对话列表
-            # messages[0]["role"] == "system" : 保证是系统消息
-            # messages[0]["content"] != prompts[func_list.get()]: 保证不是当前功能
             elif (
                 messages[0]["role"] == "system"
                 and messages[0]["content"] != prompts[func_list.get()]
