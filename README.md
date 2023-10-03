@@ -27,7 +27,7 @@ pip install openai
 
 ## 运行
 
-直接运行`src/main.py`文件。
+直接运行`src/Main.py`文件。
 
 ## 模式选择
 
@@ -87,4 +87,4 @@ pip install openai
 
 ## **程序结构**
 
-![程序结构](http://sy0316.oss-cn-hangzhou.aliyuncs.com/img/程序结构.png)
+![程序结构图](http://sy0316.oss-cn-hangzhou.aliyuncs.com/img/程序结构图.png)

@@ -10,7 +10,7 @@ font_style = "Consolas"
 font_size = 12
 # windows_size = "600x800"
 # 设置窗口大小
-window_height = 30
+window_height = 40
 window_width = 70
 # 1
 Dialog_box_size = (window_width, int(window_height * 0.4))

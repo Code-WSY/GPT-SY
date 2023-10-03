@@ -1,8 +1,6 @@
 # -----------------------------------------------------------------------------------#
 # ----------------------------------导入窗口------------------------------------------#
 from Bottom_Submit import *
-
-
 """
 设计：
     所有的UI设计都在这里
@@ -83,12 +81,6 @@ def change_UI():
     elif selected_mode.get() == "Fine-tuning":
         foget_all()
         load_UI()
-
-
-# 执行显示菜单
-from Menu_file import filemenu_file
-from Menu_clear import filemenu_clear
-
 chat_UI()
 # trace:当变量改变时，执行函数
 selected_mode.trace("w", lambda *args: change_UI())

@@ -1,3 +1,6 @@
+# 执行显示菜单
+from Menu_file import *
+from Menu_clear import *
 from UI import *
 # -----------------------------------------------------------------------------------#
 filename = "../API_KEY/API_KEY"

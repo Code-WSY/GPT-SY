@@ -1,6 +1,5 @@
 from Bottom_Submit import *
 
-
 def clear_display():
     Dialog_box.config(state=tk.NORMAL)
     Dialog_box.delete(0.0, tk.END)
