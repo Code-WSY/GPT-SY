@@ -1,6 +1,7 @@
 import tkinter as tk
 from windows import window
-from config import font_style, font_size,Dialog_box_size,colors
+from config import font_style, font_size, Dialog_box_size, colors
+
 # ---------------------------------------------------------------------------------#
 # ----------------------------------对话显示栏--------------------------------------#
 # ---------------------------------------------------------------------------------#

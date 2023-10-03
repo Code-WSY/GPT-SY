@@ -84,3 +84,7 @@ pip install openai
 ## 导出对话
 
 如果希望将对话进行保存，可以通过`文件--→保存`，保存位置是`Chat_history`文件夹下，对话内容将保存为`jsonlines`的格式，方便下一次通过`Fine-tuning`模式导入。
+
+## **程序结构**
+
+![image-20231003183729404](http://sy0316.oss-cn-hangzhou.aliyuncs.com/img/image-20231003183729404.png)

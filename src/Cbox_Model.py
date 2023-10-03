@@ -1,8 +1,17 @@
 import tkinter as tk
-from windows import window
-from config import font_style, font_size, model_message, Label_model_size, model_use, message_box_size, ComboBox_model_size
 from tkinter.ttk import Combobox
+from windows import window
+from config import (
+    font_style,
+    font_size,
+    model_message,
+    Label_model_size,
+    model_use,
+    message_box_size,
+    ComboBox_model_size,
+)
 from Box_Message import model_message_box
+
 
 """
 设计：
@@ -15,7 +24,7 @@ from Box_Message import model_message_box
 
 
 def on_combobox_select_model(event):
-    #Label_model.config(text="模型: " + model_list.get())
+    # Label_model.config(text="模型: " + model_list.get())
     Label_model.config(text="模型: ")
     display_model_message(None)
 
@@ -35,20 +44,22 @@ def display_model_message(event):
 
 
 Label_model = tk.Label(window, text="模型：")
-#左对齐
+# 左对齐
 Label_model.config(anchor=tk.E)
 Label_model.config(width=Label_model_size[0], height=Label_model_size[1])
 Label_model.config(fg="black", font=(font_style, font_size + 2))
 selected_model = tk.StringVar()
 selected_model.set("gpt-3.5-turbo")
-model_list = Combobox(window, values=list(model_use.keys()), textvariable=selected_model, state="readonly")
-#设置长度
+model_list = Combobox(
+    window, values=list(model_use.keys()), textvariable=selected_model, state="readonly"
+)
+# 设置长度
 model_list.config(width=ComboBox_model_size[0])
 model_list.bind("<<ComboboxSelected>>", on_combobox_select_model)
 # 模型下拉框的大小
-#字体
+# 字体
 model_list.config(font=(font_style, font_size))
-#model_list.config(width=Label_model_size[0], height=Label_model_size[1])
+# model_list.config(width=Label_model_size[0], height=Label_model_size[1])
 
 if __name__ == "__main__":
     Label_model.grid(row=0, column=0, sticky=tk.W)

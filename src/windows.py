@@ -12,7 +12,7 @@ window.iconphoto(True, logo)
 # 创建一个顶层菜单栏
 menubar = tk.Menu(window)
 window.config(menu=menubar)
-#设置菜单栏颜色
+# 设置菜单栏颜色
 menubar.config(bg=colors[2])
 if __name__ == "__main__":
     # 进入消息循环

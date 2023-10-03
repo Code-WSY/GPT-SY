@@ -1,6 +1,6 @@
 import openai
-from Box_Message import model_message_box
-from MenuBar import *
+from UI import *
+
 # -----------------------------------------------------------------------------------#
 filename = "../API_KEY/API_KEY"
 # 打开文件
@@ -17,8 +17,7 @@ try:
 except:
     model_message_box.insert(tk.END, "未登录\n")
 # -----------------------------------------------------------------------------------#
-#静止调整窗口大小
-if __name__ == '__main__':
+# 静止调整窗口大小
+if __name__ == "__main__":
     window.resizable(0, 0)
-    chat_UI()
     window.mainloop()

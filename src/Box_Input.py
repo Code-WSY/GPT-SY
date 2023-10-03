@@ -1,7 +1,15 @@
 import tkinter as tk
 from windows import window
-from config import font_style, font_size, Input_box_size, temperature_box_size, max_tokens_box_size, \
-    temperature_label_size, max_tokens_label_size,colors
+from config import (
+    font_style,
+    font_size,
+    Input_box_size,
+    temperature_box_size,
+    max_tokens_box_size,
+    temperature_label_size,
+    max_tokens_label_size,
+    colors,
+)
 
 """
 设计：
@@ -34,12 +42,14 @@ max_tokens_box.insert(0, "50")
 # 创建两个标签，用于显示提示信息
 temperature_label = tk.Label(window, text="温度[0,1]：")
 max_tokens_label = tk.Label(window, text="输出长度(tokens)：")
-#右对齐
+# 右对齐
 temperature_label.config(anchor=tk.E)
 max_tokens_label.config(anchor=tk.E)
 # 字体
 temperature_label.config(font=(font_style, font_size + 2))
-temperature_label.config(width=temperature_label_size[0], height=temperature_label_size[1])
+temperature_label.config(
+    width=temperature_label_size[0], height=temperature_label_size[1]
+)
 
 temperature_box.config(font=(font_style, font_size + 1))
 max_tokens_label.config(font=(font_style, font_size + 2))

@@ -1,6 +1,6 @@
 import tkinter as tk
 from windows import window
-from config import font_style, font_size,message_box_size,colors
+from config import font_style, font_size, message_box_size, colors
 
 """
 设计：
@@ -15,7 +15,7 @@ from config import font_style, font_size,message_box_size,colors
 # ---------------------------------------------------------------------------------#
 # ------------------------------------显示模型信息----------------------------------------#
 # ---------------------------------------------------------------------------------#
-#浅黑
+# 浅黑
 model_message_box = tk.Text(window, bg=colors[1], fg=colors[2])
 model_message_box.insert("insert", "未登录")
 model_message_box.config(font=(font_style, font_size + 4))
@@ -30,6 +30,3 @@ if __name__ == "__main__":
     model_message_box.config(state=tk.DISABLED)
     print(model_message_box.get("1.0", tk.END))
     window.mainloop()
-
-
-

@@ -1,12 +1,18 @@
+import openai
 import tkinter as tk
 from tkinter import filedialog
-from Box_Input import Input_box
-import openai
-from Box_Message import model_message_box
 from config import font_style, font_size
-from Bottom_Submit import messages_list
+from Menu_mode import selected_mode
+
+from Box_Dialog import Dialog_box
+from Box_Input import Input_box
+from Box_Message import model_message_box
 from Cbox_Model import model_list
 from Cbox_Promot import func_list
+from Bottom_Submit import messages_list
+
+from UI import chat_UI,load_UI,foget_all
+
 
 """
 实现菜单栏功能的函数：
@@ -69,4 +75,24 @@ def login():
     model_message_box.config(width=50, height=4)
     model_message_box.config(state=tk.DISABLED)
 
+def clear_display():
+
+    Dialog_box.config(state=tk.NORMAL)
+    Dialog_box.delete(0.0, tk.END)
+    Dialog_box.config(state=tk.DISABLED)
+def clear_messages_list():
+
+    messages_list.set("[]")
+    model_message_box.config(state=tk.NORMAL)
+    model_message_box.delete(0.0, tk.END)
+    model_message_box.insert("insert", "成功清空对话记录")
+    model_message_box.config(state=tk.DISABLED)
+
+def change_UI():
+    if selected_mode.get() == "Prompt-based":
+        foget_all()
+        chat_UI()
+    elif selected_mode.get() == "Fine-tuning":
+        foget_all()
+        load_UI()
 
