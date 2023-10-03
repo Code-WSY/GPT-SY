@@ -92,3 +92,7 @@ pip install openai
 ## 示例
 
 ![image-20231003200236219](http://sy0316.oss-cn-hangzhou.aliyuncs.com/img/image-20231003200236219.png)
+
+## 源代码获取地址
+
+[Code-WSY/GPT-SY: A desktop application for GPT. (github.com)](https://github.com/Code-WSY/GPT-SY)

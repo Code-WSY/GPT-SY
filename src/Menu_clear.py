@@ -10,7 +10,7 @@ def clear_messages_list():
     messages_list.set("[]")
     model_message_box.config(state=tk.NORMAL)
     model_message_box.delete(0.0, tk.END)
-    model_message_box.insert("insert", "成功清空对话记录")
+    model_message_box.insert(tk.END, "成功清空对话记录")
     model_message_box.config(state=tk.DISABLED)
 
 

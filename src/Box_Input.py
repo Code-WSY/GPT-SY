@@ -22,6 +22,13 @@ Input_box = tk.Text(window, bg=colors[2])
 Input_box.config(width=Input_box_size[0], height=Input_box_size[1])
 Input_box.config(state="normal")
 Input_box.config(font=(font_style, font_size + 2))
+# 添加滚动条,右侧
+Input_box_scrollbar = tk.Scrollbar(Input_box)
+Input_box.config(yscrollcommand=Input_box_scrollbar.set)  # 关联
+Input_box_scrollbar.config(command=Input_box.yview)  # 滚动条动作与文本框动作同步
+
+
+# ---------------------------------------------------------------------------------#
 # 创建两个输入框，用于输入内容
 temperature_box = tk.Entry(window, width=temperature_box_size[0])
 temperature_box.insert(0, "0.6")
@@ -48,8 +55,13 @@ max_tokens_box.config(font=(font_style, font_size + 1))
 
 if __name__ == "__main__":
     # ---------------------------------------------------------------------------------#
-    temperature_label.grid(row=0, column=0, sticky=tk.W)
-    temperature_box.grid(row=0, column=1, sticky=tk.W)
-    max_tokens_label.grid(row=0, column=2, sticky=tk.W)
-    max_tokens_box.grid(row=0, column=3, sticky=tk.W)
+    # 显示
+    Input_box.grid(row=0, column=0,columnspan=4,sticky=tk.NSEW)
+    #Input_box_scrollbar.grid(row=0, column=1, sticky=tk.NSEW)
+    Input_box_scrollbar.grid(row=0, column=1, sticky=tk.NSEW,ipady=Input_box_size[1]*font_size*0.85) #ipady=Input_box_size[1]*font_size
+    temperature_label.grid(row=1, column=0, sticky=tk.E)
+    temperature_box.grid(row=1, column=1, sticky=tk.W)
+    max_tokens_label.grid(row=1, column=2, sticky=tk.E)
+    max_tokens_box.grid(row=1, column=3, sticky=tk.W)
+
     window.mainloop()

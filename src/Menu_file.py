@@ -8,7 +8,7 @@ def open_file():
     )
     with open(file_path, "r", encoding="utf-8") as f:
         Input_box.delete("1.0", "end")
-        Input_box.insert("insert", f.read())
+        Input_box.insert(tk.END, f.read())
 
 
 def save_file():

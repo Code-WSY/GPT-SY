@@ -22,9 +22,9 @@ def on_combobox_select_model(event):
 def display_model_message(event):
     model_message_box.config(state=tk.NORMAL)
     model_message_box.delete("1.0", "end")
-    model_message_box.insert("insert", model_list.get() + ":\n")
+    model_message_box.insert(tk.END, model_list.get() + ":\n")
     model_message_info = model_message[model_list.get()]
-    model_message_box.insert("insert", model_message_info)
+    model_message_box.insert(tk.END, model_message_info)
     # 字体
     model_message_box.config(font=(font_style, font_size + 4))
     # 尺寸
@@ -45,10 +45,8 @@ model_list = Combobox(
 # 设置长度
 model_list.config(width=ComboBox_model_size[0])
 model_list.bind("<<ComboboxSelected>>", on_combobox_select_model)
-# 模型下拉框的大小
 # 字体
 model_list.config(font=(font_style, font_size))
-# model_list.config(width=Label_model_size[0], height=Label_model_size[1])
 
 if __name__ == "__main__":
     Label_model.grid(row=0, column=0, sticky=tk.W)

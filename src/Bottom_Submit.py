@@ -24,7 +24,7 @@ def sumbit_text(event):
     Input_box.delete("1.0", "end")
     # 将用户输入的文本提交到对话框
     Dialog_box.config(state=tk.NORMAL)
-    Dialog_box.insert("insert", "User：\n" + text + "\n")
+    Dialog_box.insert(tk.END, "User：\n" + text + "\n")
     Dialog_box.see(tk.END)
     try:
         temperature = float(temperature_box.get())
@@ -55,7 +55,7 @@ def sumbit_text(event):
                 max_tokens=max_token,
             )
             # 将回答提交到对话框,并滚动到最后一行,并提交到message
-            Dialog_box.insert("insert", "AI：\n" + answer + "\n\n")
+            Dialog_box.insert(tk.END, "AI：\n" + answer + "\n\n")
             Dialog_box.see(tk.END)
             messages.append({"role": "assistant", "content": answer})
 
@@ -63,7 +63,7 @@ def sumbit_text(event):
             # 报错显示
             model_message_box.config(state=tk.NORMAL)
             model_message_box.delete("1.0", "end")
-            model_message_box.insert("insert", "该模型不支持Fine-tuning")
+            model_message_box.insert(tk.END, "该模型不支持Fine-tuning")
             model_message_box.config(state=tk.DISABLED)
             Dialog_box.see(tk.END)
 
@@ -71,16 +71,15 @@ def sumbit_text(event):
         # 报错显示
         model_message_box.config(state=tk.NORMAL)
         model_message_box.delete("1.0", "end")
-        model_message_box.insert("insert", "请先导入对话")
+        model_message_box.insert(tk.END, "请先导入对话")
         model_message_box.config(state=tk.DISABLED)
-        Dialog_box.see(tk.END)
 
     # -----------------------------------------------------------------------------------#
     # ----------------------------------普通模式------------------------------------------#
     elif selected_mode.get() == "Prompt-based":
         if model_use[model_list.get()] == "ChatCompletion":
-            print(messages)  # 对话历史
-            print(prompts[func_list.get()])  # 选择的功能
+            #print(messages)  # 对话历史
+            #print(prompts[func_list.get()])  # 选择的功能
             # 首次提交
             if len(messages) == 0:
                 messages.append(choice_func(model_list.get(), func_list.get())[0])
@@ -95,9 +94,11 @@ def sumbit_text(event):
                 model_message_box.config(state=tk.NORMAL)
                 model_message_box.delete("1.0", "end")
                 model_message_box.insert(
-                    "insert", "已切换功能\n" "当前功能：" + func_list.get() + "\n" "历史对话已清空\n"
+                    tk.END, "已切换功能\n" "当前功能：" + func_list.get() + "\n" "历史对话已清空\n"
                 )
+                #tk.END:插入到最后一行
                 model_message_box.config(state=tk.DISABLED)
+
 
             # 提问提交到message,并交给GPT回答
             messages.append({"role": "user", "content": text})
@@ -108,7 +109,7 @@ def sumbit_text(event):
                 max_tokens=max_token,
             )
             # 将回答提交到对话框,并滚动到最后一行,并提交到message
-            Dialog_box.insert("insert", "AI：\n" + answer + "\n\n")
+            Dialog_box.insert(tk.END, "AI：\n" + answer + "\n\n")
             Dialog_box.see(tk.END)
             messages.append({"role": "assistant", "content": answer})
 
@@ -126,7 +127,7 @@ def sumbit_text(event):
                 max_tokens=max_token,
             )
             messages[-1]["completion"] = answer
-            Dialog_box.insert("insert", "AI：\n" + answer + "\n\n")
+            Dialog_box.insert(tk.END, "AI：\n" + answer + "\n\n")
             Dialog_box.see(tk.END)
     # -----------------------------------------------------------------------------------#
     # 更新对话列表

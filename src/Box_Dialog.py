@@ -22,12 +22,16 @@ Dialog_box = tk.Text(
     highlightthickness=0,
 )
 Dialog_box.config(state=tk.DISABLED)  # 设置为不可编辑
+#添加滚动条
 
+Dialog_box_scrollbar = tk.Scrollbar(Dialog_box)
+Dialog_box.config(yscrollcommand=Dialog_box_scrollbar.set)
+Dialog_box_scrollbar.config(command=Dialog_box.yview)
 
 if __name__ == "__main__":
     Dialog_box.grid(row=0, column=0, columnspan=1, sticky=tk.NSEW)
     Dialog_box.config(state=tk.NORMAL)
-    Dialog_box.insert("insert", "123\n456\n\n\n\n\n\n\n`1121\n\n\n\n\n`")
+    Dialog_box.insert(tk.END, "12\n\n\n\n\n\n\n\n\n\n\n\n\n\n1111234\n\n\n3\n456\n\n\n\n\n\n\n`1121\n\n\n\n1111\n`")
     Dialog_box.config(state=tk.DISABLED)
     print(Dialog_box.get("1.0", tk.END))
     window.mainloop()
