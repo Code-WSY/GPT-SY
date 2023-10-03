@@ -1,5 +1,4 @@
-import tkinter as tk
-from windows import window, menubar
+from windows import *
 
 # -----------------------------------------------------------------------------------#
 # 创建一个菜单

@@ -1,24 +1,10 @@
-import tkinter as tk
-from config import (
-    choice_func,
-    askGPT,
-    submit_button_size,
-    font_style,
-    font_size,
-    colors,
-    model_use,
-    prompts,
-)
-from windows import window
+from Box_Dialog import *
+from Box_Input import *
+from Cbox_Prompt import *
+from Menu_mode import *
 
-from Box_Dialog import Dialog_box
-from Box_Input import Input_box, temperature_box, max_tokens_box
-from Box_Message import model_message_box
-from Cbox_Prompt import func_list
-from Menu_mode import selected_mode
-
-from Cbox_Model import model_list, selected_model
-from Button_Load import Load_Content, LOAD_BOOL
+from Cbox_Model import *
+from Button_Load import *
 
 
 """

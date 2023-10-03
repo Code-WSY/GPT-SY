@@ -1,9 +1,5 @@
-import tkinter as tk
-from windows import window
+from windows import *
 from tkinter.ttk import Combobox
-from config import font_style, font_size, Label_func_size, prompts, ComboBox_func_size
-
-
 # ---------------------------------------------------------------------------------#
 """
 设计：

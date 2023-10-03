@@ -1,15 +1,5 @@
-import tkinter as tk
-from windows import window
-from config import (
-    font_style,
-    font_size,
-    Input_box_size,
-    temperature_box_size,
-    max_tokens_box_size,
-    temperature_label_size,
-    max_tokens_label_size,
-    colors,
-)
+from windows import *
+
 
 """
 设计：

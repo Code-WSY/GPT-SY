@@ -1,25 +1,6 @@
 # -----------------------------------------------------------------------------------#
 # ----------------------------------导入窗口------------------------------------------#
-# -----------------------------------------------------------------------------------#
-import tkinter as tk
-from windows import window
-from Menu_mode import selected_mode
-from Box_Dialog import Dialog_box
-from Box_Message import model_message_box
-from Box_Input import (
-    Input_box,
-    temperature_box,
-    max_tokens_box,
-    temperature_label,
-    max_tokens_label,
-)
-
-from Cbox_Model import model_list, Label_model
-from Cbox_Prompt import func_list, Label_func
-
-from Button_Load import import_button, import_label
-
-from Bottom_Submit import submit_button
+from Bottom_Submit import *
 
 
 """

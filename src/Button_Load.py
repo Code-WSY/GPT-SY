@@ -1,8 +1,5 @@
-import tkinter as tk
-from windows import window
-import tkinter.filedialog
-from config import import_button_size, font_style, font_size
-from Box_Message import model_message_box
+from Box_Message import *
+from tkinter import filedialog
 
 """
 设计:

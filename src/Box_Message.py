@@ -1,6 +1,4 @@
-import tkinter as tk
-from windows import window
-from config import font_style, font_size, message_box_size, colors
+from windows import *
 
 """
 设计：

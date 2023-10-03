@@ -1,10 +1,4 @@
-import tkinter as tk
-from windows import window, menubar
-
-from Box_Dialog import Dialog_box
-from Box_Message import model_message_box
-
-from Bottom_Submit import messages_list
+from Bottom_Submit import *
 
 
 def clear_display():

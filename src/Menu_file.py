@@ -1,11 +1,6 @@
-import tkinter as tk
-from windows import window, menubar
 import tkinter.filedialog
-from Box_Input import Input_box
-from Cbox_Model import model_list
-from Cbox_Prompt import func_list
-from Bottom_Submit import messages_list
-from Box_Message import model_message_box
+from Bottom_Submit import *
+
 
 def open_file():
     file_path = tk.filedialog.askopenfilename(

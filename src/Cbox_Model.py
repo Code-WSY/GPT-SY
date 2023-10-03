@@ -1,16 +1,5 @@
-import tkinter as tk
 from tkinter.ttk import Combobox
-from windows import window
-from config import (
-    font_style,
-    font_size,
-    model_message,
-    Label_model_size,
-    model_use,
-    message_box_size,
-    ComboBox_model_size,
-)
-from Box_Message import model_message_box
+from Box_Message import *
 
 
 """
