@@ -1,0 +1,92 @@
+[
+    {
+        "model": "gpt-3.5-turbo",
+        "description": "- 描述：GPT3.5模型，最强大的GPT-3.5模型，针对聊天进行了优化，成本仅为之前版本的1/10。在最新模型发布后的两周内将进行更新。\n- Max_tokens：4097 tokens\n- 训练数据：截至2021年9月\n",
+        "use_in": "ChatCompletion"
+    },
+    {
+        "model": "gpt-3.5-turbo-16k",
+        "description": "- 描述：GPT3.5模型，与标准模型具有相同的功能，但上下文大小增加了4倍。\n- Max_tokens：16385 tokens\n- 训练数据：截至2021年9月\n",
+        "use_in": "ChatCompletion"
+    },
+    {
+        "model": "gpt-3.5-turbo-instruct",
+        "description": "- 描述：GPT3.5模型，兼容旧版的Completions端点，不适用于Chat Completions。\n- Max_tokens：4097 tokens\n- 训练数据：截至2021年9月\n",
+        "use_in": "Completion"
+    },
+    {
+        "model": "gpt-3.5-turbo-0613",
+        "description": "- 描述：GPT3.5模型，基于2023年6月13日的快照，包含函数调用数据。与其他模型不同，此模型将不会接收更新，并在发布新版本后的3个月内被弃用。\n- Max_tokens：4097 tokens\n- 训练数据：截至2021年9月\n",
+        "use_in": "ChatCompletion"
+    },
+    {
+        "model": "gpt-3.5-turbo-16k-0613",
+        "description": "- 描述：GPT3.5模型，基于2023年6月13日的快照，包含函数调用数据。与其他模型不同，此模型将不会接收更新，并在发布新版本后的3个月内被弃用。\n- Max_tokens：16385 tokens\n- 训练数据：截至2021年9月\n",
+        "use_in": "ChatCompletion"
+    },
+    {
+        "model": "gpt-3.5-turbo-0301",
+        "description": "- 描述：GPT3.5模型，基于2023年3月1日的快照，包含函数调用数据。与其他模型不同，此模型将不会接收更新，并在发布新版本后的3个月内被弃用。\n- Max_tokens：4097 tokens\n- 训练数据：截至2021年9月\n",
+        "use_in": "ChatCompletion"
+    },
+    {
+        "model": "text-davinci-003",
+        "description": "- 描述：GPT3.5模型，可以执行任何语言任务，具有比curie、babbage或ada模型更好的质量、更长的输出以及一致的指令遵循。还支持一些额外功能，如插入文本。\n- Max_tokens：4097 tokens\n- 训练数据：截至2021年6月\n",
+        "use_in": "Completion"
+    },
+    {
+        "model": "code-davinci-002",
+        "description": "- 描述：GPT3.5模型，针对代码补全任务进行了优化。\n- Max_tokens：8001 tokens\n- 训练数据：截至2021年6月\n",
+        "use_in": "Completion"
+    },
+    {
+        "model": "text-curie-001",
+        "description": "- 描述：GPT3模型,非常强大，速度比Davinci快，成本更低。\n- Max_tokens：2049 tokens\n- 训练数据：截至2019年10月\n",
+        "use_in": "Completion"
+    },
+    {
+        "model": "text-babbage-001",
+        "description": "- 描述：GPT3模型，能够处理直接的任务，非常快速，成本更低。\n- Max_tokens：2049 tokens\n- 训练数据：截至2019年10月\n",
+        "use_in": "Completion"
+    },
+    {
+        "model": "text-ada-001",
+        "description": "- 描述：GPT3模型，能够处理非常简单的任务，通常是GPT-3系列中速度最快、成本最低的模型。\n- Max_tokens：2049 tokens\n- 训练数据：截至2019年10月\n",
+        "use_in": "Completion"
+    },
+    {
+        "model": "davinci",
+        "description": "- 描述：最强大的GPT-3模型。可以执行其他模型可以执行的任何任务，并且通常具有更高的质量。- Max_tokens：2049 tokens\n- 训练数据：截至2019年10月\n",
+        "use_in": "Completion"
+    },
+    {
+        "model": "curie",
+        "description": "- 描述：GPT-3模型，非常强大，速度比Davinci快，成本更低。\n- Max_tokens：2049 tokens\n- 训练数据：截至2019年10月\n",
+        "use_in": "Completion"
+    },
+    {
+        "model": "babbage",
+        "description": "- 描述：GPT-3模型，能够处理直接的任务，非常快速，成本更低。\n- Max_tokens：2049 tokens\n- 训练数据：截至2019年10月\n",
+        "use_in": "Completion"
+    },
+    {
+        "model": "ada",
+        "description": "- 描述：GPT-3模型，能够处理非常简单的任务，通常是GPT-3系列中速度最快、成本最低的模型。\n- Max_tokens：2049 tokens\n- 训练数据：截至2019年10月\n",
+        "use_in": "Completion"
+    },
+    {
+        "model": "babbage-002",
+        "description": "- 描述：用于替代GPT-3和基础模型。\n- Max_tokens：16384 tokens\n- 训练数据：截至2021年9月\n",
+        "use_in": "Completion"
+    },
+    {
+        "model": "davinci-002",
+        "description": "- 描述：用于替代GPT-3和基础模型。\n- Max_tokens：16384 tokens\n- 训练数据：截至2021年9月\n",
+        "use_in": "Completion"
+    },
+    {
+        "model": "text-davinci-002",
+        "description": "- 描述：功能与文本-davinci-003 强化学习类似，但使用监督微调而非文本-davinci-003 强化学习进行训练。\n- Max_tokens：4097 tokens\n- 训练数据：截至2021年6月\n",
+        "use_in": "Completion"
+    }
+]

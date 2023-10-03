@@ -21,39 +21,43 @@ from Bottom_Submit import submit_button
 # ------------------------------------设计排列---------------------------------------#
 # ----------------------------------------------------------------------------------#
 def load_UI():
+    # 1
     Dialog_box.grid(row=0, column=0, columnspan=4, sticky=tk.NSEW)
+    # 2
     model_message_box.grid(row=1, column=0, columnspan=4, sticky=tk.NSEW)
-
+    # 3
     temperature_label.grid(row=2, column=0, sticky=tk.E)
     temperature_box.grid(row=2, column=1, sticky=tk.W)
     max_tokens_label.grid(row=2, column=2, sticky=tk.E)
     max_tokens_box.grid(row=2, column=3, sticky=tk.W)
-    # 模型及功能
+    # 4
     Label_model.grid(row=3, column=0, sticky=tk.E)
     model_list.grid(row=3, column=1, sticky=tk.W)
     import_label.grid(row=3, column=2, sticky=tk.E)
     import_button.grid(row=3, column=3, columnspan=1, sticky=tk.NSEW)
-
+    # 5
     Input_box.grid(row=4, column=0, columnspan=4, sticky=tk.NSEW)
+    # 6
     submit_button.grid(row=5, column=1, columnspan=2, sticky=tk.NSEW)
 
 def chat_UI():
-    #划分网
+    #1
     Dialog_box.grid(row=0, column=0, columnspan=4, sticky=tk.NSEW)
+    #2
     model_message_box.grid(row=1, column=0, columnspan=4, sticky=tk.NSEW)
+    #3
     temperature_label.grid(row=2, column=0,sticky=tk.E)
     temperature_box.grid(row=2, column=1,sticky=tk.W)
     max_tokens_label.grid(row=2, column=2,sticky=tk.E)
     max_tokens_box.grid(row=2, column=3,sticky=tk.W)
-    # 模型及功能
+    #4
     Label_model.grid(row=3, column=0, sticky=tk.E)
-    #设置网格颜色
-
     model_list.grid(row=3, column=1, sticky=tk.W)
     Label_func.grid(row=3, column=2, sticky=tk.E)
     func_list.grid(row=3, column=3, sticky=tk.W)
-
+    #5
     Input_box.grid(row=4, column=0, columnspan=4, sticky=tk.NSEW)
+    #6
     submit_button.grid(row=5, column=1, columnspan=2, sticky=tk.NSEW)
 
 def foget_all():
@@ -68,9 +72,10 @@ def foget_all():
     model_list.grid_forget()
     Label_func.grid_forget()
     func_list.grid_forget()
+    import_button.grid_forget()
+
     Input_box.grid_forget()
     submit_button.grid_forget()
-    import_button.grid_forget()
 
 if __name__ == "__main__":
     pass

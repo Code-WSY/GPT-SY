@@ -32,8 +32,8 @@ max_tokens_box = tk.Entry(window, width=max_tokens_box_size[0])
 max_tokens_box.insert(0, "50")
 
 # 创建两个标签，用于显示提示信息
-temperature_label = tk.Label(window, text="温度（0-1）：")
-max_tokens_label = tk.Label(window, text="输出标记数：")
+temperature_label = tk.Label(window, text="温度[0,1]：")
+max_tokens_label = tk.Label(window, text="输出长度(tokens)：")
 #右对齐
 temperature_label.config(anchor=tk.E)
 max_tokens_label.config(anchor=tk.E)

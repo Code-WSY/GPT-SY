@@ -26,14 +26,23 @@ def open_file():
 
 def save_file():
     # 保存messages:
+    save_file_path ="../Chat_history/" + model_list.get() + "_" + func_list.get() + ".txt"
+    #查看是否有重复文件
     try:
-        file_path = model_list.get() + "_" + func_list.get() + ".txt"
+        i=1
+        while True:
+            #打开文件
+            f = open(save_file_path, "r", encoding="utf-8")
+            f.close()
+            #上面的语句没有报错，说明文件存在
+            save_file_path = "../Chat_history/" + model_list.get() + "_" + func_list.get() + "_" + str(i) + ".txt"
+            i += 1
     except:
-        file_path = model_list.get() + ".txt"
-    # 逐个写入
-    with open(file_path, "w", encoding="utf-8") as f:
-        for message in eval(messages_list.get()):
-            f.write(str(message) + "\n")
+        # 逐个写入
+        with open(save_file_path, "w", encoding="utf-8") as f:
+            for message in eval(messages_list.get()):
+                f.write(str(message) + "\n")
+
     # 输出保存成功到message_box
     model_message_box.config(state=tk.NORMAL)
     model_message_box.delete("1.0", "end")

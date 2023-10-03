@@ -1,6 +1,6 @@
 import tkinter as tk
 from windows import window
-from config import font_style, font_size, function_list, Label_func_size
+from config import font_style, font_size, Label_func_size, prompts,ComboBox_func_size
 from tkinter.ttk import Combobox
 
 # ---------------------------------------------------------------------------------#
@@ -29,11 +29,13 @@ Label_func = tk.Label(window, text="功能：")
 Label_func.config(width=Label_func_size[0], height=Label_func_size[1])
 Label_func.config(fg="black", font=(font_style, font_size + 2))
 # 左对齐
-Label_func.config(anchor=tk.W)
+Label_func.config(anchor=tk.E)
 # 下拉框：
 selected_func = tk.StringVar()
-selected_func.set("无")
-func_list = Combobox(window, values=function_list, textvariable=selected_func, )
+selected_func.set("初始对话")
+func_list = Combobox(window, values=list(prompts.keys()), textvariable=selected_func, state="readonly")
+# 设置长度
+func_list.config(width=ComboBox_func_size[0])
 func_list.bind("<<ComboboxSelected>>", on_combobox_select_func)
 # 字体
 func_list.config(font=(font_style, font_size))

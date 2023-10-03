@@ -18,5 +18,7 @@ except:
     model_message_box.insert(tk.END, "未登录\n")
 # -----------------------------------------------------------------------------------#
 #静止调整窗口大小
-window.resizable(0, 0)
-window.mainloop()
+if __name__ == '__main__':
+    window.resizable(0, 0)
+    chat_UI()
+    window.mainloop()
