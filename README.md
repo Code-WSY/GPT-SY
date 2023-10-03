@@ -88,3 +88,7 @@ pip install openai
 ## **程序结构**
 
 ![程序结构图](http://sy0316.oss-cn-hangzhou.aliyuncs.com/img/程序结构图.png)
+
+## 示例
+
+![image-20231003200236219](http://sy0316.oss-cn-hangzhou.aliyuncs.com/img/image-20231003200236219.png)
