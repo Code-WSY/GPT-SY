@@ -2,12 +2,19 @@
 
 <img src="http://sy0316.oss-cn-hangzhou.aliyuncs.com/img/logo_gptsy.png" alt="logo" style="zoom:33%;" />
 
+新版更新：
+
+1. 将GPT回答的输出改为流式传输，好处在于**按需生成文本，而不需要等到整个文本都生成完毕**。这对于处理**大型文本生成任务**来说非常有用，因为它可以降低内存占用和网络带宽使用，并且可以更快地获得部分结果。
+2. 优化默认配色，并增加了字体、颜色、字号的修改设置。
+3. 解决了提出问题的用户。
+
 最近趁着国庆假期，写了一个**GPT**的桌面端应用程序，目前主要开发了如下功能：
 
 1. **GPT模型集成**：将目前已有的OpenAI的GPT模型（免费的）集成到了程序中，可自行选择模型。
 2. **参数调整**：提供一些参数调整的选项，如温度和输出长度参数。可以根据自己的需求调整生成文本的多样性和长度。
 3. **提示库**：收集了目前流行和常用的提示库，并将其集成到应用程序中，以便对GPT更好的提问，从而获取最佳答案。
 4. **保存对话记录**：可以将历史对话保存，并自动生成可供预训练的文件格式。
+5. **支持预训练模式**：允许通过导入对话来生成新对话。
 
 ## 安装
 
@@ -35,7 +42,7 @@ pip install openai
 
 在这种模式下，通过选择`功能`选项，会先为GPT提供一个系统请求（prompt），然后再在输入框输入需要进行的任务内容。GPT会根据提示理解意图，并生成相应的回答。
 
-<img src="http://sy0316.oss-cn-hangzhou.aliyuncs.com/img/image-20231003145334796.png" alt="image-20231003145334796" style="zoom:50%;" />
+<img src="C:\Users\WangSuyun\AppData\Roaming\Typora\typora-user-images\image-20231005212509480.png" alt="界面风格" style="zoom:50%;" />
 
 
 
@@ -57,9 +64,9 @@ pip install openai
 
 ### Fine-tuning
 
-<img src="http://sy0316.oss-cn-hangzhou.aliyuncs.com/img/image-20231003145736776.png" alt="image-20231003145736776" style="zoom:50%;" />
+<img src="http://sy0316.oss-cn-hangzhou.aliyuncs.com/img/image-20231005212700689.png" alt="界面" style="zoom:50%;" />
 
-在这种模式下，可以将先前的对话导入到GPT中，并继续对话。这种模式利用了GPT已经在大规模文本数据上进行的预训练。通过将先前的对话作为输入，GPT可以根据之前的上下文来生成连贯的回复。这种模式适用于需要在现有对话基础上进行延续的场景。
+在这种模式下，可以将先前的对话导入，并继续对话。这种模式利用了GPT已经在大规模文本数据上进行的预训练。通过将先前的对话作为输入，GPT可以根据之前的上下文来生成连贯的回复。这种模式适用于需要在现有对话基础上进行延续的场景。
 
 如果不导入文件直接进行对话，
 
@@ -80,7 +87,7 @@ pip install openai
 
 1. 导入文件后，历史对话记录将会被清空，GPT将不会记得之前的对话内容（主要针对`ChatCompletion`）
 2. 导入的文件对`Completion`对于的格式来说，没有意义，因为这是单文本对话，该形式的微调目前收费。
-3. 未导入文件不能进行对话。
+3. **未导入文件不能进行对话。**
 
 ## 模式切换
 
@@ -122,14 +129,15 @@ pip install openai
 
 如果希望将对话进行保存，可以通过`文件--→保存`，保存位置是`Chat_history`文件夹下，对话内容将保存为`jsonlines`的格式，方便下一次通过`Fine-tuning`模式导入。
 
-## **程序结构**
-
-![程序结构图](http://sy0316.oss-cn-hangzhou.aliyuncs.com/img/程序结构图.png)
-
 ## 示例
 
-![image-20231003200236219](http://sy0316.oss-cn-hangzhou.aliyuncs.com/img/image-20231003200236219.png)
+<img src="http://sy0316.oss-cn-hangzhou.aliyuncs.com/img/image-20231005212939448.png" alt="image-20231005212939448" style="zoom:50%;" />
 
-## 源代码获取地址
+在选择不同模型时，会提供该模型的基本信息：
+
+<img src="http://sy0316.oss-cn-hangzhou.aliyuncs.com/img/image-20231005213213261.png" alt="image-20231005213213261" style="zoom:50%;" />
+
+## 获取地址：
 
 [Code-WSY/GPT-SY: A desktop application for GPT. (github.com)](https://github.com/Code-WSY/GPT-SY)
+

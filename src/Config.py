@@ -30,7 +30,7 @@ GPT3_add_prompt="我的第一个任务是："
 # 字体
 NAME = "GPT-SY"
 font_style = "Consolas"
-font_size = 10
+font_size = 11
 # windows_size = "600x800"
 # 设置窗口大小
 window_height = 50
@@ -63,7 +63,7 @@ submit_button_size = (int(window_width * 0.5), 1)
 # 提交按钮背景颜色，提交按钮字体颜色
 colors = ["#192A56","#FFFFFF",
           "#E1F5FE", "#424242",
-          "#1E2127","#ABB2BF",
+          "#1E2127","#FFFFFF",
           "#F1ECE9","#4E342E"]
 
 # 下拉框颜色:
