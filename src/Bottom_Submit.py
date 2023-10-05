@@ -16,7 +16,7 @@ def submit_user_parameter():
     user_content = Input_box.get("1.0", "end")
     Input_box.delete("1.0", "end")
     Dialog_box.config(state=tk.NORMAL)
-    Dialog_box.insert(tk.END, "User：\n" + user_content + "\n")
+    Dialog_box.insert(tk.END, "\nUser：\n" + user_content + "\n")
     Dialog_box.config(state=tk.DISABLED)
     Dialog_box.see(tk.END)
     Dialog_box.update()
