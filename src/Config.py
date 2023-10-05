@@ -5,7 +5,10 @@ import json
 # 所有可变类型变量为了保证全局引用，不要对其进行赋值操作，只能对其进行修改操作
 chat_history = []
 load_content = []
-save_file_path=["../ChatLogs/",]
+#获取桌面地址
+
+path_init = "../ChatLogs/"
+save_file_path=[path_init,]
 API_file = ["../API_KEY/API_KEY",]
 #print("ID_chat_history:", id(chat_history))
 # 提示库

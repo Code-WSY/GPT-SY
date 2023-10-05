@@ -4,10 +4,10 @@ from Cbox_Prompt import *
 from Menu_mode import *
 from Cbox_Model import *
 from Button_Load import *
-from GPT.src.ask_GPT import *
 from scripts.add_chat import *
 from scripts.check_format import *
 from scripts.is_prompt_changed import *
+from ask_GPT import *
 
 
 # 提交用户输入设置的参数
