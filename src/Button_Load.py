@@ -18,19 +18,19 @@ def on_import_select(event):
     Load_Format.set(format)
     if format == "Error":
         ISLOAD.set("导入失败")
-        model_message_box.config(state=tk.NORMAL)
-        model_message_box.delete(0.0, tk.END)
-        model_message_box.insert(tk.END, "导入失败\n" "请检查文件格式是否正确。\n")
+        Message_box.config(state=tk.NORMAL)
+        Message_box.delete(0.0, tk.END)
+        Message_box.insert(tk.END, "导入失败\n" "请检查文件格式是否正确。\n")
         #设置字体为红色
-        model_message_box.tag_add("tag1", "1.0", "end")
-        model_message_box.tag_config("tag1", foreground="red")#设置tag1的字体颜色为红色
-        model_message_box.config(state=tk.DISABLED)
+        Message_box.tag_add("tag1", "1.0", "end")
+        Message_box.tag_config("tag1", foreground="red")#设置tag1的字体颜色为红色
+        Message_box.config(state=tk.DISABLED)
     else:
         ISLOAD.set("导入成功")
-        model_message_box.config(state=tk.NORMAL)
-        model_message_box.delete(0.0, tk.END)
-        model_message_box.insert(tk.END, "已导入文件：\n" + import_file_name + "\n")
-        model_message_box.config(state=tk.DISABLED)
+        Message_box.config(state=tk.NORMAL)
+        Message_box.delete(0.0, tk.END)
+        Message_box.insert(tk.END, "已导入文件：\n" + import_file_name + "\n")
+        Message_box.config(state=tk.DISABLED)
         # 将内容储存删除
         chat_history.clear()
         for i in range(len(content)):
@@ -44,13 +44,14 @@ ISLOAD.set("未导入")
 #记录导入格式
 Load_Format = tk.StringVar()
 # 创建一个按钮，点击之后弹出一个窗口，选择文件
-import_button = tk.Button(window,textvariable=ISLOAD,command=lambda: on_import_select(None),)
+import_button = tk.Button(window,textvariable=ISLOAD,command=lambda: on_import_select(None),highlightthickness=2,highlightcolor="#1E1E1E")
+import_button.config(background=cbox_colors[6], foreground=cbox_colors[7])
 # 按钮样式
 import_button.config(width=import_button_size[0], height=import_button_size[1])
-import_button.config(font=(font_style, font_size))
+import_button.config(font=cbox_font)
 
 import_label = tk.Label(window, text="导入文件：")
-import_label.config(font=(font_style, font_size+2))
+import_label.config(font=cbox_font)
 
 
 if __name__ == "__main__":

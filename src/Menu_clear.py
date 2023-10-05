@@ -8,10 +8,10 @@ def clear_display():
 
 def clear_messages_list():
     chat_history.clear()
-    model_message_box.config(state=tk.NORMAL)
-    model_message_box.delete(0.0, tk.END)
-    model_message_box.insert(tk.END, "成功清空对话记录")
-    model_message_box.config(state=tk.DISABLED)
+    Message_box.config(state=tk.NORMAL)
+    Message_box.delete(0.0, tk.END)
+    Message_box.insert(tk.END, "成功清空对话记录")
+    Message_box.config(state=tk.DISABLED)
 
 # -----------------------------------------------------------------------------------#
 filemenu_clear = tk.Menu(menubar, tearoff=0)

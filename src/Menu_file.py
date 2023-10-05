@@ -1,3 +1,4 @@
+import os
 import tkinter.filedialog
 from Box_Input import *
 from Cbox_Prompt import *
@@ -12,20 +13,20 @@ def open_file():
 
 
 def save_file():
-    # 保存messages:
-    save_file_path = (
-            "../Chat_history/" + selected_model.get() + "_" + selected_prompt.get() + ".txt"
-    )
+    #先查看文件夹是否存在
+    if not os.path.exists(save_file_path[0]):
+        os.mkdir(save_file_path[0])
+    save_file_name = save_file_path[0] + selected_model.get() + "_" + selected_prompt.get() + ".txt"
     # 查看是否有重复文件
     try:
         i = 1
         while True:
             # 打开文件
-            f = open(save_file_path, "r", encoding="utf-8")
+            f = open(save_file_name, "r", encoding="utf-8")
             f.close()
-            # 上面的语句没有报错，说明文件存在
-            save_file_path = (
-                    "../Chat_history/"
+            # 上面的语句没有报错(能读取)，说明文件存在
+            save_file_name = (
+                    save_file_path[0]
                     + selected_model.get()
                     + "_"
                     + selected_prompt.get()
@@ -35,13 +36,15 @@ def save_file():
             )
             i += 1
     except:
-        with open(save_file_path, "w", encoding="utf-8") as f:
+        with open(save_file_name, "w", encoding="utf-8") as f:
             for message in chat_history:
                 f.write(str(message) + "\n")
-    model_message_box.config(state=tk.NORMAL)
-    model_message_box.delete(0.0, tk.END)
-    model_message_box.insert(tk.END, "已保存：\n   " + save_file_path + "\n")
-    model_message_box.config(state=tk.DISABLED)
+
+    Message_box.config(state=tk.NORMAL)
+    Message_box.delete(0.0, tk.END)
+    Message_box.insert(tk.END, "已保存：\n   " + save_file_name + "\n")
+    Message_box.config(state=tk.DISABLED)
+    Message_box.update()
 
 
 # -----------------------------------------------------------------------------------#

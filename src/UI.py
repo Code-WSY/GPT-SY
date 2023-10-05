@@ -19,7 +19,7 @@ def load_UI():
     Dialog_box.grid(row=0, column=0, columnspan=4, sticky=tk.NSEW)
     #Dialog_box_scrollbar.grid(row=0, column=1, sticky=tk.NSEW,ipady=100)
     # 2
-    model_message_box.grid(row=1, column=0, columnspan=4, sticky=tk.NSEW)
+    Message_box.grid(row=1, column=0, columnspan=4, sticky=tk.NSEW)
     #model_message_box_scrollbar.grid(row=1, column=1, sticky=tk.NSEW,ipady=100)
     # 3
     temperature_label.grid(row=2, column=0, sticky=tk.E)
@@ -41,7 +41,7 @@ def chat_UI():
     # 1
     Dialog_box.grid(row=0, column=0, columnspan=4, sticky=tk.NSEW)
     # 2
-    model_message_box.grid(row=1, column=0, columnspan=4, sticky=tk.NSEW)
+    Message_box.grid(row=1, column=0, columnspan=4, sticky=tk.NSEW)
     # 3
     temperature_label.grid(row=2, column=0, sticky=tk.E)
     temperature_box.grid(row=2, column=1, sticky=tk.W)
@@ -60,7 +60,7 @@ def chat_UI():
 
 def foget_all():
     Dialog_box.grid_forget()
-    model_message_box.grid_forget()
+    Message_box.grid_forget()
     temperature_label.grid_forget()
     temperature_box.grid_forget()
     max_tokens_label.grid_forget()

@@ -7,10 +7,10 @@ Dialog_box = tk.Text(
     width=Dialog_box_size[0],
     height=Dialog_box_size[1],
     bg=colors[0],
-    fg="#EEEEEE",
-    font=(font_style, font_size + 2),
+    fg=colors[1],
+    font=(font_style, font_size),
     highlightcolor="#1E1E1E",
-    highlightthickness=0,
+    highlightthickness=2,
 )
 Dialog_box.config(state=tk.DISABLED)  # 设置为不可编辑
 if __name__ == "__main__":

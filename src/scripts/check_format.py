@@ -1,7 +1,7 @@
 import os
 def check_format(file_name,format_list):
     """
-    :param file_name: list or filename
+    :param file_name: list or API_file
     :param format_list: 可能的格式列表
     :return: file_name 符合的格式 in format_list
     """

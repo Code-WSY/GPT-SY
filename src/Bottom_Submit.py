@@ -74,10 +74,10 @@ def check_and_sendGPT(text, temperature, max_token, selected_model, selected_pro
         add_chat(answer, chat_history, model_use_format[selected_model], "assistant")
     else:
         # 报错显示格式有误
-        model_message_box.config(state=tk.NORMAL)
-        model_message_box.delete("1.0", "end")
-        model_message_box.insert(tk.END, "历史对话与模型不匹配")
-        model_message_box.config(state=tk.DISABLED)
+        Message_box.config(state=tk.NORMAL)
+        Message_box.delete("1.0", "end")
+        Message_box.insert(tk.END, "历史对话与模型不匹配")
+        Message_box.config(state=tk.DISABLED)
         Dialog_box.see(tk.END)
 
 def sumbit_text(event):
@@ -104,9 +104,9 @@ submit_button = tk.Button(window,
 # 按钮的字体
 submit_button.config(
     font=(font_style, font_size),
-    background=colors[3],
+    background=colors[6],
     activebackground=colors[3],
-    foreground=colors[0],
+    foreground=colors[7],
 )
 
 if __name__ == "__main__":

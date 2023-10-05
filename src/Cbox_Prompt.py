@@ -9,11 +9,13 @@ prompts_list = Combobox(
 )
 # 设置 Combobox 的样式
 prompts_list.config(width=ComboBox_func_size[0])
-prompts_list.config(font=(font_style, font_size))
+prompts_list.config(font=cbox_font)
+# 设置 Combobox 的颜色
+prompts_list.config(background=cbox_colors[6], foreground=cbox_colors[7])
 # 标签：
 Label_func = tk.Label(window, text="功能：")
-Label_func.config(width=Label_func_size[0], height=Label_func_size[1])
-Label_func.config(fg="black", font=(font_style, font_size + 2))
+Label_func.config(width=Label_func_size[0], height=Label_func_size[1],
+                  bg=cbox_colors[4], fg=cbox_colors[5], font=cbox_font)
 Label_func.config(anchor=tk.E)
 
 
