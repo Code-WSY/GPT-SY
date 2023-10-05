@@ -23,6 +23,9 @@ def add_chat(text, chat_history,  model_use_format, user):
         if user == "system":
             res= {"prompt": text, "completion": ""}
             chat_history.append(res)
+            if len(chat_history) ==2 and chat_history[0]["completion"] == "":
+                #说明是初始化，删除第一个元素
+                chat_history.pop(0)
 
         elif user == "user":
             chat_history[-1]["prompt"] += text

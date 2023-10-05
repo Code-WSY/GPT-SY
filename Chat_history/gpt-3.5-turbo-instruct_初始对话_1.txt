@@ -1,0 +1,2 @@
+{'prompt': '我的第一个任务是：凄凄切切\n', 'completion': '<|diff_marker|> 1000\n+我的第一个任务是：\n+\n+凄凄切切\n'}
+{'prompt': '1212 \n', 'completion': 'TRGL 1216 1218 1217 \nTRGL 1219 1218 1216 \nTRGL 1218 1219 1220 \nTRGL 1218 1220 1221 \nTRGL 1218 122'}

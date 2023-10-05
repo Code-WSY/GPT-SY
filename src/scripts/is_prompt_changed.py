@@ -19,12 +19,7 @@ def is_prompt_changed(chat_history,selected_model_format,selected_prompt):
 
         elif selected_model_format == "Completion":
             """
-            对于Completion格式，
-            只要检查最新的元素的completion是否为空就可以了
-            如果空，就返回False
-            如果不空，就返回True
+            对于Completion格式:
+            直接返回True
             """
-            if chat_history[-1]["completion"] != "":
-                return True
-            else:
-                return False
+            return True

@@ -46,14 +46,11 @@ def check_and_sendGPT(text, temperature, max_token, selected_model, selected_pro
         if selected_mode == mode_list[0]:
             # 检查期间是否更改了功能
             if is_prompt_changed(chat_history, chat_history_format, prompts[selected_prompt]):
-                #complettion非空
                 add_chat(prompts[selected_prompt], chat_history, chat_history_format, "system")
             # 添加用户输入
             if chat_history_format == format_list[0]:
                 add_chat(text, chat_history, model_use_format[selected_model], "user")
             elif chat_history_format == format_list[1]:
-                #导入转功能时：若导入的对话中，最后的completion为空。
-                #则下面对话会插入到之前的prompt中.尽量避免这种情况。
                 add_chat(GPT3_add_prompt + text, chat_history, model_use_format[selected_model], "user")
         #导入模式
         elif selected_mode == mode_list[1]:
@@ -89,7 +86,7 @@ def sumbit_text(event):
         selected_mode= submit_user_parameter()
     # -------------------------------------------------------------------------------------#
     # 如果对话记录为空，就初始化对话记录
-    if chat_history == []:
+    if chat_history == [] and selected_mode == mode_list[0]:
         # 如果对话记录为空，就添加用户输入
         add_chat(prompts[selected_prompt],
                  chat_history, model_use_format[selected_model], "system")

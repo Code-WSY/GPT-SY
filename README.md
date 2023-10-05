@@ -31,7 +31,7 @@ pip install openai
 
 ## 模式选择
 
-### Promot-based
+### Prompt-based
 
 在这种模式下，通过选择`功能`选项，会先为GPT提供一个系统请求（prompt），然后再在输入框输入需要进行的任务内容。GPT会根据提示理解意图，并生成相应的回答。
 
@@ -39,13 +39,32 @@ pip install openai
 
 
 
+注意：
+
+1. 这是默认模式。
+
+2. 如果在对话中途切换功能，对于`ChatCompletion`，会先将`system`的`prompt`提交，再将用户输入的文本提交。
+
+3. 对于`Completion`，由于是无记忆的，并且`completion`非空，因此会直接在历史记录加入对应功能的`prompt`：
+
+   ```json
+   {"prompt": prompt+input, "completion": ""}
+   ```
+
+   具体参加`is_prompt_changed.py`。
+
+   
+
 ### Fine-tuning
 
 <img src="http://sy0316.oss-cn-hangzhou.aliyuncs.com/img/image-20231003145736776.png" alt="image-20231003145736776" style="zoom:50%;" />
 
 在这种模式下，可以将先前的对话导入到GPT中，并继续对话。这种模式利用了GPT已经在大规模文本数据上进行的预训练。通过将先前的对话作为输入，GPT可以根据之前的上下文来生成连贯的回复。这种模式适用于需要在现有对话基础上进行延续的场景。
 
-注意：在切换到`Fine-tuning`前，请先清空历史对话。
+如果不导入文件直接进行对话，
+
+- 对于`ChatCompletion`,即为无任何提示词的对话。
+- 对于`Completion`，
 
 导入文件格式如下：
 
@@ -56,6 +75,22 @@ pip install openai
 {"role": "user", "content": question2}
 {"role": "assistant", "content": answer2}
 ```
+
+**注意：**
+
+1. 导入文件后，历史对话记录将会被清空，GPT将不会记得之前的对话内容（主要针对`ChatCompletion`）
+2. 导入的文件对`Completion`对于的格式来说，没有意义，因为这是单文本对话，该形式的微调目前收费。
+3. 未导入文件不能进行对话。
+
+## 模式切换
+
+- 从Fine-tunning切换到Prompt-based，
+  - 对于`ChatCompletion`，会根据选择的功能加入`system`语句并继续对话。
+  - 对于`Completion`，由于是单文本对话，因此只是导入了历史记录，对话无影响。
+
+- 从Prompt-based切换到Fine-tunning，
+  - 对于`ChatCompletion`实际就是之前历史对话的延续，不会加入`system`语句。
+  - 对于`Completion`，为无promote对话模式。
 
 ## 清空
 
@@ -80,6 +115,8 @@ pip install openai
 ## 文本导入
 
 如果有大段内容需要提交给GPT，可以通过`文件--→打开`，进行文本选择，内容将会导入到输入栏中。
+
+目前仅支持文本格式导入。
 
 ## 导出对话
 
