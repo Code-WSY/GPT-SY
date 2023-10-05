@@ -1,5 +1,0 @@
-{'role': 'system', 'content': ''}
-{'role': 'user', 'content': '你好啊呀\n'}
-{'role': 'assistant', 'content': '你好！有什么我可以帮助你的吗？'}
-{'role': 'user', 'content': '猜个谜语吧！\n'}
-{'role': 'assistant', 'content': '当然可以！请告诉我谜语，我会尽力猜出答案。'}
