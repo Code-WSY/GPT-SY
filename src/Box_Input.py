@@ -1,18 +1,4 @@
 from windows import *
-
-
-"""
-设计：
-    1.输入栏
-    2.温度输入框
-    3.最大标记数输入框
-    4.温度标签
-    5.最大标记数标签
-输出：
-    1.temperature_box：温度输入框（外部获取：temperature_box.get()）
-    2.max_tokens_box：最大标记数输入框（外部获取：max_tokens_box.get()）
-"""
-
 # ---------------------------------------------------------------------------------#
 # ----------------------------------输入栏-----------------------------------------#
 # ---------------------------------------------------------------------------------#
@@ -22,11 +8,6 @@ Input_box = tk.Text(window, bg=colors[2])
 Input_box.config(width=Input_box_size[0], height=Input_box_size[1])
 Input_box.config(state="normal")
 Input_box.config(font=(font_style, font_size + 2))
-# 添加滚动条,右侧
-Input_box_scrollbar = tk.Scrollbar(Input_box)
-Input_box.config(yscrollcommand=Input_box_scrollbar.set)  # 关联
-Input_box_scrollbar.config(command=Input_box.yview)  # 滚动条动作与文本框动作同步
-
 
 # ---------------------------------------------------------------------------------#
 # 创建两个输入框，用于输入内容
@@ -57,8 +38,6 @@ if __name__ == "__main__":
     # ---------------------------------------------------------------------------------#
     # 显示
     Input_box.grid(row=0, column=0,columnspan=4,sticky=tk.NSEW)
-    #Input_box_scrollbar.grid(row=0, column=1, sticky=tk.NSEW)
-    Input_box_scrollbar.grid(row=0, column=1, sticky=tk.NSEW,ipady=Input_box_size[1]*font_size*0.85) #ipady=Input_box_size[1]*font_size
     temperature_label.grid(row=1, column=0, sticky=tk.E)
     temperature_box.grid(row=1, column=1, sticky=tk.W)
     max_tokens_label.grid(row=1, column=2, sticky=tk.E)

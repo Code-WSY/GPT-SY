@@ -1,7 +1,7 @@
 import tkinter.filedialog
-from Bottom_Submit import *
-
-
+from Box_Input import *
+from Cbox_Prompt import *
+from Cbox_Model import *
 def open_file():
     file_path = tk.filedialog.askopenfilename(
         title="选择文件", filetypes=[("All Files", "*")]
@@ -14,7 +14,7 @@ def open_file():
 def save_file():
     # 保存messages:
     save_file_path = (
-        "../Chat_history/" + model_list.get() + "_" + func_list.get() + ".txt"
+            "../Chat_history/" + selected_model.get() + "_" + selected_prompt.get() + ".txt"
     )
     # 查看是否有重复文件
     try:
@@ -25,19 +25,18 @@ def save_file():
             f.close()
             # 上面的语句没有报错，说明文件存在
             save_file_path = (
-                "../Chat_history/"
-                + model_list.get()
-                + "_"
-                + func_list.get()
-                + "_"
-                + str(i)
-                + ".txt"
+                    "../Chat_history/"
+                    + selected_model.get()
+                    + "_"
+                    + selected_prompt.get()
+                    + "_"
+                    + str(i)
+                    + ".txt"
             )
             i += 1
     except:
-        # 逐个写入
         with open(save_file_path, "w", encoding="utf-8") as f:
-            for message in eval(messages_list.get()):
+            for message in chat_history:
                 f.write(str(message) + "\n")
     model_message_box.config(state=tk.NORMAL)
     model_message_box.delete(0.0, tk.END)

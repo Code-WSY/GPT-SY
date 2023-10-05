@@ -51,7 +51,7 @@ def chat_UI():
     Label_model.grid(row=3, column=0, sticky=tk.E)
     model_list.grid(row=3, column=1, sticky=tk.W)
     Label_func.grid(row=3, column=2, sticky=tk.E)
-    func_list.grid(row=3, column=3, sticky=tk.W)
+    prompts_list.grid(row=3, column=3, sticky=tk.W)
     # 5
     Input_box.grid(row=4, column=0, columnspan=4, sticky=tk.NSEW)
     # 6
@@ -69,7 +69,7 @@ def foget_all():
     Label_model.grid_forget()
     model_list.grid_forget()
     Label_func.grid_forget()
-    func_list.grid_forget()
+    prompts_list.grid_forget()
     import_button.grid_forget()
 
     Input_box.grid_forget()
@@ -77,10 +77,10 @@ def foget_all():
 
 
 def change_UI():
-    if selected_mode.get() == "Prompt-based":
+    if selected_mode.get() == mode_list[0]:
         foget_all()
         chat_UI()
-    elif selected_mode.get() == "Fine-tuning":
+    elif selected_mode.get() == mode_list[1]:
         foget_all()
         load_UI()
 chat_UI()

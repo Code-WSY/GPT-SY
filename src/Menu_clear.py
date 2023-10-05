@@ -1,18 +1,17 @@
-from Bottom_Submit import *
+from Box_Dialog import *
+from Box_Message import *
 
 def clear_display():
     Dialog_box.config(state=tk.NORMAL)
     Dialog_box.delete(0.0, tk.END)
     Dialog_box.config(state=tk.DISABLED)
 
-
 def clear_messages_list():
-    messages_list.set("[]")
+    chat_history.clear()
     model_message_box.config(state=tk.NORMAL)
     model_message_box.delete(0.0, tk.END)
     model_message_box.insert(tk.END, "成功清空对话记录")
     model_message_box.config(state=tk.DISABLED)
-
 
 # -----------------------------------------------------------------------------------#
 filemenu_clear = tk.Menu(menubar, tearoff=0)

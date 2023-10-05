@@ -1,24 +1,5 @@
 from tkinter.ttk import Combobox
 from Box_Message import *
-
-
-"""
-设计：
-    创建一个下拉框，选项为可用的模型
-    选中后更改标签的值
-输出：
-    model_list：下拉框（外部获取：model_list.get()：选中的值）
-    Label_model：标签内容（外部获取：Label_model.cget("text")）
-"""
-
-
-def on_combobox_select_model(event):
-    # Label_model.config(text="模型: " + model_list.get())
-    Label_model.config(text="模型: ")
-    display_model_message(None)
-
-
-# 与模型下拉框绑定，当模型改变时，输入框的内容也会改变
 def display_model_message(event):
     model_message_box.config(state=tk.NORMAL)
     model_message_box.delete("1.0", "end")
@@ -32,21 +13,22 @@ def display_model_message(event):
     model_message_box.config(state=tk.DISABLED)
 
 
-Label_model = tk.Label(window, text="模型：")
-# 左对齐
-Label_model.config(anchor=tk.E)
-Label_model.config(width=Label_model_size[0], height=Label_model_size[1])
-Label_model.config(fg="black", font=(font_style, font_size + 2))
 selected_model = tk.StringVar()
 selected_model.set("gpt-3.5-turbo")
 model_list = Combobox(
-    window, values=list(model_use.keys()), textvariable=selected_model, state="readonly"
+    window, values=list(model_use_format.keys()), textvariable=selected_model, state="readonly"
 )
-# 设置长度
+
+# 设置 Combobox 的样式
 model_list.config(width=ComboBox_model_size[0])
-model_list.bind("<<ComboboxSelected>>", on_combobox_select_model)
-# 字体
 model_list.config(font=(font_style, font_size))
+Label_model = tk.Label(window, text="模型：")
+# 设置 Label 的样式
+Label_model.config(anchor=tk.E)
+Label_model.config(width=Label_model_size[0], height=Label_model_size[1])
+Label_model.config(fg="black", font=(font_style, font_size + 2))
+# 绑定事件
+model_list.bind("<<ComboboxSelected>>", display_model_message)
 
 if __name__ == "__main__":
     Label_model.grid(row=0, column=0, sticky=tk.W)
