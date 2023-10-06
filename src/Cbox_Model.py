@@ -1,5 +1,6 @@
 from tkinter.ttk import Combobox
 from Box_Message import *
+from Menu_mode import *
 def display_model_message(event):
     Message_box.config(state=tk.NORMAL)
     Message_box.delete("1.0", "end")
@@ -11,12 +12,26 @@ def display_model_message(event):
     # 尺寸
     Message_box.config(width=message_box_size[0], height=message_box_size[1])
     Message_box.config(state=tk.DISABLED)
+    Message_box.update()
 
-
+#先获取当前的模式
 selected_model = tk.StringVar()
-selected_model.set("gpt-3.5-turbo")
+#获得当前的模式
+selected_model.set(mode_dict[selected_mode.get()][0])
+#创建下拉框
+model_list_list = mode_dict[selected_mode.get()]
 model_list = Combobox(
-    window, values=list(model_use_format.keys()), textvariable=selected_model, state="readonly",background=colors[2],foreground=colors[3])
+    window, values=model_list_list
+    , textvariable=selected_model, state="readonly",background=colors[2],foreground=colors[3],
+)
+#绑定事件：模式改变时，改变模型列表
+def change_model_list(event):
+    model_list.config(values=mode_dict[selected_mode.get()])
+    model_list.current(0)#设置默认值,即默认选择第一个
+# -----------------------------------------------------------------------------------#
+#绑定
+selected_mode.trace("w", lambda *args: change_model_list(None))
+
 
 # 设置 Combobox 的样式
 model_list.config(width=ComboBox_model_size[0])

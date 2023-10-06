@@ -109,5 +109,20 @@
         "model": "gpt-4-32k-0613",
         "description": "- 描述：来自2023年6月13日gpt-4-32k的快照，包含函数调用数据。与gpt-4-32k不同的是，该模型将不会收到更新，并将在新版本发布3个月后报废。\n- Max_tokens：32768 tokens\n- 训练数据：截至2021年9月\n",
         "use_in": "ChatCompletion"
+    },
+    {
+        "model":"text-davinci-edit-001",
+        "description":"- 描述：GPT3.5模型，与标准模型具有相同的功能，但上下文大小增加了4倍。\n- Max_tokens：4097 tokens\n- 训练数据：截至2021年9月\n",
+        "use_in":"Edit"
+    },
+    {
+        "model":"code-davinci-edit-001",
+        "description":"- 描述：GPT3.5模型，与标准模型具有相同的功能，但上下文大小增加了4倍。\n- Max_tokens：4097 tokens\n- 训练数据：截至2021年9月\n",
+        "use_in":"Edit"
+    },
+    {
+        "model":"text-embedding-ada-002",
+        "description":"- 描述：创建一个嵌入向量，代表输入的文本。\n- Max_tokens：\n- 训练数据：\n",
+        "use_in":"Embedding"
     }
 ]

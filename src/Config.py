@@ -1,31 +1,61 @@
 import json
+
+import openai
+
 """
     本文件用于配置基本的字体大小参数，模型参数。以及全局变量。
 """
-# 所有可变类型变量为了保证全局引用，不要对其进行赋值操作，只能对其进行修改操作
-chat_history = []
-load_content = []
-#获取桌面地址
-
-path_init = "../ChatLogs/"
-save_file_path=[path_init,]
-API_file = ["../API_KEY/API_KEY",]
-#print("ID_chat_history:", id(chat_history))
 # 提示库
 prompts = {}
 # 模型信息
 model_message = {}
 # 模型适用格式(函数)
-model_use_format = {}
-# 可用模式的类型
-mode_list = ["Prompt-based", "Fine-tuning"]
-# 可用对话函数的类型
-format_list = ["ChatCompletion", "Completion", "Error"]
-# 每一个模式可用的对话函数
-can_use_in_mode = {"Fine-tuning": ["ChatCompletion", ],
-                   "Prompt-based": ["ChatCompletion", "Completion"]
-                   }
-GPT3_add_prompt="我的第一个任务是："
+model_use_mode = {}
+# 模式列表
+mode_dict=set() #{模式：适用模式的model列表}
+mode_prompt_dict=set() #{模式：适用模式的prompt列表}
+chat_history=set() #聊天记录
+# -----------------------------------------------------------------------------------#
+save_path_init = "../ChatLogs/"
+# -----------------------------------------------------------------------------------#
+with open("../data/Model.json", "r", encoding="utf-8") as f:
+    model_json = json.load(f)
+# -----------------------------------------------------------------------------------#
+# 从模型列表中获取模式列表
+for i in model_json:
+    #key:模式，value:适用模式的model列表
+    mode_dict.add(i["use_in"])
+    #key:模式，value:适用模式的prompt列表
+    mode_prompt_dict.add(i["use_in"])
+    #key:模式，value:适用模式聊天记录
+    chat_history.add(i["use_in"])
+# -----------------------------------------------------------------------------------#
+mode_dict={i:[] for i in mode_dict}
+mode_prompt_dict={i:[] for i in mode_prompt_dict}
+chat_history={i:[] for i in chat_history}
+# -----------------------------------------------------------------------------------#
+for i in model_json:
+    mode_dict[i["use_in"]].append(i["model"])
+# -----------------------------------------------------------------------------------#
+# 模型信息
+for i in model_json:
+    model_message[i["model"]] = i["description"]
+    model_use_mode[i["model"]] = i["use_in"]
+# -----------------------------------------------------------------------------------#
+# 提示库用于ChatCompletion模式和Completion模式
+with open("../data/prompts.json", "r", encoding="utf-8") as f:
+    prompts_load = json.load(f)
+for i in prompts_load:
+    prompts[i["act"]] = i["prompt"]
+    mode_prompt_dict["ChatCompletion"].append(i["act"])
+    mode_prompt_dict["Completion"].append(i["act"])
+#其余模式不适用prompt，都加一个“”进去
+for i in mode_prompt_dict:
+    if i not in ["ChatCompletion","Completion"]:
+        mode_prompt_dict[i].append("")
+# -----------------------------------------------------------------------------------#
+# 保存路径
+save_file_path=[save_path_init, ]
 #-----------------------------------------------------------------------------------#
 # 字体
 NAME = "GPT-SY"
@@ -80,15 +110,3 @@ cbox_font=(font_style,font_size+2)
 #背景：米色 (#F1ECE9),字体：深灰色 #424242
 entry_font=(font_style,font_size+2)
 entry_colors=["#F1ECE9","#424242","#F1ECE9","#424242","#F1ECE9","#424242","#F1ECE9","#424242"]
-
-# -----------------------------------------------------------------------------------#
-with open("../data/prompts.json", "r", encoding="utf-8") as f:
-    prompts_load = json.load(f)
-for i in prompts_load:
-    prompts[i["act"]] = i["prompt"]
-with open("../data/Model.json", "r", encoding="utf-8") as f:
-    model_json = json.load(f)
-for i in model_json:
-    model_message[i["model"]] = i["description"]
-    model_use_format[i["model"]] = i["use_in"]
-# -----------------------------------------------------------------------------------#

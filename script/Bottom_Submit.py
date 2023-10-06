@@ -8,8 +8,6 @@ from scripts.add_chat import *
 from scripts.check_format import *
 from scripts.is_prompt_changed import *
 from ask_GPT import *
-
-
 # 提交用户输入设置的参数
 def submit_user_parameter():
     # 将用户输入的文本提交到对话框
@@ -32,46 +30,42 @@ def submit_user_parameter():
         # 如果用户没有输入最大标记数，就默认为50
         max_token = 50
     return user_content, temperature, max_token, \
-        selected_model.get(), selected_prompt.get(),selected_mode.get()
+        selected_model.get(), selected_prompt_title.get(),selected_mode.get()
 
 # 检查格式并发送
 def check_and_sendGPT(text, temperature, max_token, selected_model, selected_prompt,
                       selected_mode
                       ):
     # 检查对话记录格式
-    chat_history_format, history = check_format(chat_history, format_list)
+    chat_history_format, history = check_format(chat_history)
     # 检查对话记录与模型是否匹配
-    if model_use_format[selected_model] == chat_history_format:
+    if model_in_mode[selected_model] == chat_history_format:
         #功能模式
-        if selected_mode == mode_list[0]:
+        if selected_mode == mode_dict[0]:
             # 检查期间是否更改了功能
             if is_prompt_changed(chat_history, chat_history_format, prompts[selected_prompt]):
                 add_chat(prompts[selected_prompt], chat_history, chat_history_format, "system")
+
             # 添加用户输入
             if chat_history_format == format_list[0]:
-                add_chat(text, chat_history, model_use_format[selected_model], "user")
+                add_chat(text, chat_history, model_in_mode[selected_model], "user")
             elif chat_history_format == format_list[1]:
-                add_chat(GPT3_add_prompt + text, chat_history, model_use_format[selected_model], "user")
+                add_chat(GPT3_add_prompt + text, chat_history, model_in_mode[selected_model], "user")
         #导入模式
-        elif selected_mode == mode_list[1]:
+        elif selected_mode == mode_dict[1]:
             if chat_history_format == format_list[0]:
                 #若从功能转导入，则为之前历史训练的延续，不需要添加prompt
-                add_chat(text, chat_history, model_use_format[selected_model], "user")
+                add_chat(text, chat_history, model_in_mode[selected_model], "user")
             elif chat_history_format == format_list[1]:
                 #若从功能转导入，则为无prompt的对话。
-                add_chat("", chat_history,  model_use_format[selected_model], "system")
-                add_chat(text, chat_history, model_use_format[selected_model], "user")
+                add_chat("", chat_history, model_in_mode[selected_model], "system")
+                add_chat(text, chat_history, model_in_mode[selected_model], "user")
 
         # 交给GPT回答
-        answer = askGPT(
-            messages=chat_history,
-            MODEL=selected_model,
-            MODEL_fomat=chat_history_format,
-            temperature=temperature,
-            max_tokens=max_token,
-        )
+        answer = askGPT(messages=chat_history, MODEL=selected_model, MODEL_use_mode=chat_history_format,
+                        temperature=temperature, max_tokens=max_token)
         # AI回答
-        add_chat(answer, chat_history, model_use_format[selected_model], "assistant")
+        add_chat(answer, chat_history, model_in_mode[selected_model], "assistant")
     else:
         # 报错显示格式有误
         Message_box.config(state=tk.NORMAL)
@@ -86,10 +80,10 @@ def sumbit_text(event):
         selected_mode= submit_user_parameter()
     # -------------------------------------------------------------------------------------#
     # 如果对话记录为空，就初始化对话记录
-    if chat_history == [] and selected_mode == mode_list[0]:
+    if chat_history == [] and selected_mode == mode_dict[0]:
         # 如果对话记录为空，就添加用户输入
         add_chat(prompts[selected_prompt],
-                 chat_history, model_use_format[selected_model], "system")
+                 chat_history, model_in_mode[selected_model], "system")
 
     check_and_sendGPT(text, temperature, max_token, selected_model, selected_prompt,selected_mode)
 

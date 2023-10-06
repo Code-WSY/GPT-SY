@@ -20,18 +20,52 @@ def add_chat(text, chat_history,  model_use_format, user):
         user：是用户输入的文本加入到系统生成的文本之后 prompt+user)
         assistant：添加到completion中的文本
         """
+        completion='好了，我的第一个任务是：'
         if user == "system":
-            res= {"prompt": text, "completion": ""}
+            res= {"prompt": text+completion, "completion": ""}
             chat_history.append(res)
-            if len(chat_history) ==2 and chat_history[0]["completion"] == "":
-                #说明是初始化，删除第一个元素
-                chat_history.pop(0)
-
         elif user == "user":
             chat_history[-1]["prompt"] += text
-
         elif user == "assistant":
             chat_history[-1]["completion"] =text
+
+    elif model_use_format == "Edit":
+        if user== "system":
+            res = {"input":"", "instruction": "text", "output": ""}
+            chat_history.append(res)
+        elif user == "user":
+            chat_history[-1]["input"] = text
+        elif user == "assistant":
+            chat_history[-1]["output"] = text
+
+    elif model_use_format == "Embedding":
+        if user== "system":
+            res = {"input":"", "output": ""}
+            chat_history.append(res)
+        elif user == "user":
+            chat_history[-1]["input"] = text
+        elif user == "assistant":
+            chat_history[-1]["output"] = text
+
+    elif model_use_format == "Image.create":
+        if user== "system":
+            chat_history.append({"prompt": "", "output": ""})
+        elif user == "user":
+            chat_history[-1]["prompt"] = text
+        elif user == "assistant":
+            chat_history[-1]["output"] = text
+
+    elif model_use_format == "Image.create_edit":
+        if user== "system":
+            chat_history.append({"image": "", "mask": "",
+                                 "prompt": "", "output": ""})
+        elif user == "user":
+            chat_history[-1]["prompt"] = text
+        elif user == "assistant":
+            chat_history[-1]["output"] = text
+
+
+
 
 
 

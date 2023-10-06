@@ -1,9 +1,7 @@
 # 执行显示菜单,不能删除
-import openai
-
 from Menu_file import *
 from Menu_clear import *
-from UI import * # 模式
+from UI import * #
 from Menu_setting import *
 # -----------------------------------------------------------------------------------#
 

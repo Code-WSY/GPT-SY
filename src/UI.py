@@ -1,20 +1,17 @@
 # -----------------------------------------------------------------------------------#
 # ----------------------------------导入窗口------------------------------------------#
-from Bottom_Submit import *
+from Bottom_Submit_ChatCompletion import *
+from Bottom_Submit_Completion import *
+from Bottom_Submit_Edit import *
+from Bottom_Submit_Embeding import *
 """
 设计：
     所有的UI设计都在这里
-输出：
-    load_UI()：导入模式的UI
-    chat_UI()：聊天模式的UI
-    foget_all()：隐藏所有的组件
 """
-
-
 # ----------------------------------------------------------------------------------#
 # ------------------------------------设计排列---------------------------------------#
 # ----------------------------------------------------------------------------------#
-def load_UI():
+def init_UI():
     # 1
     Dialog_box.grid(row=0, column=0, columnspan=4, sticky=tk.NSEW)
     #Dialog_box_scrollbar.grid(row=0, column=1, sticky=tk.NSEW,ipady=100)
@@ -29,61 +26,54 @@ def load_UI():
     # 4
     Label_model.grid(row=3, column=0, sticky=tk.E)
     model_list.grid(row=3, column=1, sticky=tk.W)
-    import_label.grid(row=3, column=2, sticky=tk.E)
-    import_button.grid(row=3, column=3, columnspan=1, sticky=tk.NSEW)
-    # 5
-    Input_box.grid(row=4, column=0, columnspan=4, sticky=tk.NSEW)
-    # 6
-    submit_button.grid(row=5, column=1, columnspan=2, sticky=tk.NSEW)
-
-
-def chat_UI():
-    # 1
-    Dialog_box.grid(row=0, column=0, columnspan=4, sticky=tk.NSEW)
-    # 2
-    Message_box.grid(row=1, column=0, columnspan=4, sticky=tk.NSEW)
-    # 3
-    temperature_label.grid(row=2, column=0, sticky=tk.E)
-    temperature_box.grid(row=2, column=1, sticky=tk.W)
-    max_tokens_label.grid(row=2, column=2, sticky=tk.E)
-    max_tokens_box.grid(row=2, column=3, sticky=tk.W)
-    # 4
-    Label_model.grid(row=3, column=0, sticky=tk.E)
-    model_list.grid(row=3, column=1, sticky=tk.W)
     Label_func.grid(row=3, column=2, sticky=tk.E)
     prompts_list.grid(row=3, column=3, sticky=tk.W)
     # 5
     Input_box.grid(row=4, column=0, columnspan=4, sticky=tk.NSEW)
     # 6
-    submit_button.grid(row=5, column=1, columnspan=2, sticky=tk.NSEW)
+    submit_button_ChatCompletion.grid(row=5, column=1, columnspan=2, sticky=tk.NSEW)
 
+def Completion_UI():
+    submit_button_Completion.grid(row=5, column=1, columnspan=2, sticky=tk.NSEW)
+
+
+def ChatCompletion_UI():
+    # 6
+    submit_button_ChatCompletion.grid(row=5, column=1, columnspan=2, sticky=tk.NSEW)
+
+def Edit_UI():
+    # 6
+    submit_button_Edit.grid(row=5, column=1, columnspan=2, sticky=tk.NSEW)
+def Embedding_UI():
+    # 6
+    submit_button_Embeding.grid(row=5, column=1, columnspan=2, sticky=tk.NSEW)
 
 def foget_all():
-    Dialog_box.grid_forget()
-    Message_box.grid_forget()
-    temperature_label.grid_forget()
-    temperature_box.grid_forget()
-    max_tokens_label.grid_forget()
-    max_tokens_box.grid_forget()
-    # 模型及功能
-    Label_model.grid_forget()
-    model_list.grid_forget()
-    Label_func.grid_forget()
-    prompts_list.grid_forget()
-    import_button.grid_forget()
-
-    Input_box.grid_forget()
-    submit_button.grid_forget()
+    submit_button_Completion.grid_forget()
+    submit_button_ChatCompletion.grid_forget()
+    submit_button_Edit.grid_forget()
 
 
 def change_UI():
-    if selected_mode.get() == mode_list[0]:
+    if selected_mode.get() == 'ChatCompletion':
         foget_all()
-        chat_UI()
-    elif selected_mode.get() == mode_list[1]:
+        ChatCompletion_UI()
+        print("ChatCompletion")
+    elif selected_mode.get() == 'Completion':
         foget_all()
-        load_UI()
-chat_UI()
+        Completion_UI()
+        print("Completion")
+    elif selected_mode.get() == 'Edit':
+        foget_all()
+        Edit_UI()
+        print("Edit")
+    elif selected_mode.get() == "Embedding":
+        foget_all()
+        Embedding_UI()
+        print("Embedding")
+
+
+init_UI()
 # trace:当变量改变时，执行函数
 selected_mode.trace("w", lambda *args: change_UI())
 if __name__ == "__main__":
