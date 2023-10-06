@@ -8,6 +8,7 @@ from Menu_file import *
 from Menu_clear import *
 from Menu_setting import *
 from Menu_mode import *
+from Menu_login import *
 """
 设计：
     所有的UI设计都在这里
@@ -18,6 +19,7 @@ menubar.add_cascade(label="文件", menu=filemenu_file)
 menubar.add_cascade(label="模式", menu=filemenu_mode)
 menubar.add_cascade(label="清空", menu=filemenu_clear)
 menubar.add_cascade(label="设置", menu=filemenu_setting)
+menubar.add_cascade(label="登录", menu=filemenu_login)
 
 # ----------------------------------------------------------------------------------#
 # ------------------------------------设计排列---------------------------------------#

@@ -6,7 +6,7 @@ from Box_Message import model_message_box
 
 def login():
     # 读取API_KEY文件
-    filename = "../API_KEY/API_KEY_OPENAI"
+    filename = "../API_KEY/API_KEY_3.5"
     # 打开文件
     with open(filename, "r", encoding="utf-8") as f:
         # 读取第一行内容
