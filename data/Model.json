@@ -88,5 +88,26 @@
         "model": "text-davinci-002",
         "description": "- 描述：功能与文本-davinci-003 强化学习类似，但使用监督微调而非文本-davinci-003 强化学习进行训练。\n- Max_tokens：4097 tokens\n- 训练数据：截至2021年6月\n",
         "use_in": "Completion"
+    },
+    {
+        "model": "gpt-4",
+        "description": "- 描述：比任何 GPT-3.5 型号都更强大，能够执行更复杂的任务，并针对聊天进行了优化。将在发布2周后使用我们最新的模型迭代进行更新\n- Max_tokens：8192 tokens\n- 训练数据：截至2021年9月\n",
+        "use_in": "ChatCompletion"
+    },
+    {
+        "model": "gpt-4-0613",
+        "description": "- 描述：来自2023年6月13日gpt-4的快照，包含函数调用数据。与gpt-4不同的是，该模型将不会收到更新，并将在新版本发布3个月后报废。\n- Max_tokens：8192 tokens\n- 训练数据：截至2021年9月\n",
+        "use_in": "ChatCompletion"
+
+    },
+    {
+        "model": "gpt-4-32k",
+        "description": "- 描述：功能与标准模式gpt-4相同，但上下文长度是其 4 倍。将根据我们最新的模式迭代进行更新。\n- Max_tokens：32768 tokens\n- 训练数据：截至2021年9月\n",
+        "use_in": "ChatCompletion"
+    },
+    {
+        "model": "gpt-4-32k-0613",
+        "description": "- 描述：来自2023年6月13日gpt-4-32k的快照，包含函数调用数据。与gpt-4-32k不同的是，该模型将不会收到更新，并将在新版本发布3个月后报废。\n- Max_tokens：32768 tokens\n- 训练数据：截至2021年9月\n",
+        "use_in": "ChatCompletion"
     }
 ]

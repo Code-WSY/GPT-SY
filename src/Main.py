@@ -1,4 +1,6 @@
 # 执行显示菜单,不能删除
+import openai
+
 from Menu_file import *
 from Menu_clear import *
 from UI import * # 模式
@@ -7,11 +9,9 @@ from Menu_setting import *
 
 # 打开文件
 try:
-    with open(API_file[0], "r", encoding="utf-8") as f:
-        # 读取第一行内容
-        API_KEY = f.readline().strip("\n")
     # 登录
-    openai.api_key = API_KEY
+    openai.api_key_path = "../API_KEY/API_KEY_OPENAI"
+    openai.api_base = "https://api.openai.com/v1"
     Message_box.config(state=tk.NORMAL)
     Message_box.delete(0.0, tk.END)
     Message_box.insert(tk.END, "已登陆\n")

@@ -22,7 +22,8 @@ def askGPT(messages, MODEL, MODEL_fomat, temperature, max_tokens):
             temperature=temperature,
             n=1,
             max_tokens=max_tokens,
-            stream=True
+            stream=True,
+
         )
         for chunk in response:
             try:
@@ -52,7 +53,8 @@ def askGPT(messages, MODEL, MODEL_fomat, temperature, max_tokens):
             temperature=temperature,
             max_tokens=max_tokens,
             n=1,
-            stream=True
+            stream=True,
+
         )
         #输出对话
         for chunk in response:

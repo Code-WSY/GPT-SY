@@ -101,7 +101,7 @@ selected_setting_color_fg_Input_box.set(colors[5])
 # 创建一个菜单
 menu_setting = tk.Menu(menubar, tearoff=0)
 # 将菜单添加到菜单栏
-menubar.add_cascade(label="设置", menu=menu_setting)
+menubar.add_cascade(label="外观", menu=menu_setting)
 
 #创建三个菜单：字体，字号，颜色
 menu_setting_font = tk.Menu(menu_setting, tearoff=0)
@@ -121,13 +121,14 @@ menu_setting_font_message_box = tk.Menu(menu_setting_font, tearoff=0)
 menu_setting_font.add_cascade(label="对话框", menu=menu_setting_font_Dialog_box)
 for i in font_list:
     menu_setting_font_Dialog_box.add_radiobutton(label=i, variable=selected_setting_font_Dialog_box, command=set_font)
-menu_setting_font.add_cascade(label="输入框", menu=menu_setting_font_Input_box)
-for i in font_list:
-    menu_setting_font_Input_box.add_radiobutton(label=i, variable=selected_setting_font_Input_box, command=set_font)
 menu_setting_font.add_cascade(label="消息框", menu=menu_setting_font_message_box)
 for i in font_list:
     menu_setting_font_message_box.add_radiobutton(label=i, variable=selected_setting_font_message_box, command=set_font)
-# -----------------------------------------------------------------------------------#
+menu_setting_font.add_cascade(label="输入框", menu=menu_setting_font_Input_box)
+for i in font_list:
+    menu_setting_font_Input_box.add_radiobutton(label=i, variable=selected_setting_font_Input_box, command=set_font)
+
+# --------------------------------字号---------------------------------------------------#
 #在字号菜单中添加子菜单:对话框，输入框，消息框
 menu_setting_size_Dialog_box = tk.Menu(menu_setting_size, tearoff=0)
 menu_setting_size_Input_box = tk.Menu(menu_setting_size, tearoff=0)
@@ -137,13 +138,15 @@ menu_setting_size.add_cascade(label="对话框", menu=menu_setting_size_Dialog_b
 for i in range(font_size_range[0], font_size_range[1]):
     menu_setting_size_Dialog_box.add_radiobutton(label=i, variable=selected_setting_fontsize_Dialog_box,command=set_font)
 
+menu_setting_size.add_cascade(label="消息框", menu=menu_setting_size_message_box)
+for i in range(font_size_range[0], font_size_range[1]):
+    menu_setting_size_message_box.add_radiobutton(label=i, variable=selected_setting_fontsize_message_box,command=set_font)
+
 menu_setting_size.add_cascade(label="输入框", menu=menu_setting_size_Input_box)
 for i in range(font_size_range[0], font_size_range[1]):
     menu_setting_size_Input_box.add_radiobutton(label=i, variable=selected_setting_fontsize_Input_box,command=set_font)
 
-menu_setting_size.add_cascade(label="消息框", menu=menu_setting_size_message_box)
-for i in range(font_size_range[0], font_size_range[1]):
-    menu_setting_size_message_box.add_radiobutton(label=i, variable=selected_setting_fontsize_message_box,command=set_font)
+
 
 # -----------------------------------------------------------------------------------#
 #在颜色菜单中添加子菜单:字体颜色，背景颜色
@@ -182,13 +185,15 @@ menu_setting_background_color.add_cascade(label="对话框", menu=menu_setting_b
 for i in color_list:
     menu_setting_background_color_Dialog_box.add_radiobutton(label=i, variable=selected_setting_color_bg_Dialog_box, command=set_color)
 
+menu_setting_background_color.add_cascade(label="消息框", menu=menu_setting_background_color_message_box)
+for i in color_list:
+    menu_setting_background_color_message_box.add_radiobutton(label=i, variable=selected_setting_color_bg_message_box, command=set_color)
+
 menu_setting_background_color.add_cascade(label="输入框", menu=menu_setting_background_color_Input_box)
 for i in color_list:
     menu_setting_background_color_Input_box.add_radiobutton(label=i, variable=selected_setting_color_bg_Input_box, command=set_color)
 
-menu_setting_background_color.add_cascade(label="消息框", menu=menu_setting_background_color_message_box)
-for i in color_list:
-    menu_setting_background_color_message_box.add_radiobutton(label=i, variable=selected_setting_color_bg_message_box, command=set_color)
+
 
 # -----------------------------------------------------------------------------------#
 

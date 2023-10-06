@@ -36,9 +36,9 @@ font_size = 11
 window_height = 50
 window_width = 70
 # 1
-Dialog_box_size = (window_width, int(window_height * 0.4))
+Dialog_box_size = (window_width, int(window_height * 0.5))
 # 2
-message_box_size = (window_width, int(window_height * 0.2))
+message_box_size = (window_width, int(window_height * 0.15))
 # 3
 temperature_label_size = (int(window_width * 0.25), 1)
 temperature_box_size = (int(window_width * 0.25), 1)
