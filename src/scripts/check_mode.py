@@ -14,7 +14,13 @@ def check_mode(file_name,selected_mode):
 
     if selected_mode == "ChatCompletion":
         for line in open_file.readlines():
-            line = eval(line)
+            try:
+                line = eval(line)
+            except:
+                open_file.close()
+                if type(file_name) == list:
+                    os.remove("temp.wsy")
+                return False
             # ChatCompletion格式
             if line.keys() == {"role", "content"}:
                 if line["role"] in ["user", "assistant", "system"]:
@@ -28,7 +34,13 @@ def check_mode(file_name,selected_mode):
 
     if selected_mode == "Completion":
         for line in open_file.readlines():
-            line = eval(line)
+            try:
+                line = eval(line)
+            except:
+                open_file.close()
+                if type(file_name) == list:
+                    os.remove("temp.wsy")
+                return False
             # Completion格式
             if line.keys() == {"prompt", "completion"}:
                 continue
@@ -41,7 +53,13 @@ def check_mode(file_name,selected_mode):
 
     if selected_mode == "Edit":
         for line in open_file.readlines():
-            line = eval(line)
+            try:
+                line = eval(line)
+            except:
+                open_file.close()
+                if type(file_name) == list:
+                    os.remove("temp.wsy")
+                return False
             # Edit格式
             if line.keys() == {"input", "instruction"}:
                 continue
@@ -53,7 +71,13 @@ def check_mode(file_name,selected_mode):
 
     if selected_mode == "Embedding":
         for line in open_file.readlines():
-            line = eval(line)
+            try:
+                line = eval(line)
+            except:
+                open_file.close()
+                if type(file_name) == list:
+                    os.remove("temp.wsy")
+                return False
             # Embedding格式
             if line.keys() == {"input", "output"}:
                 continue
@@ -65,7 +89,13 @@ def check_mode(file_name,selected_mode):
 
     if selected_mode == "Image.create":
         for line in open_file.readlines():
-            line = eval(line)
+            try:
+                line = eval(line)
+            except:
+                open_file.close()
+                if type(file_name) == list:
+                    os.remove("temp.wsy")
+                return False
             # Image.create格式
             if line.keys() == {"prompt", "output"}:
                 continue
@@ -77,7 +107,13 @@ def check_mode(file_name,selected_mode):
 
     if selected_mode == "Image.create_edit":
         for line in open_file.readlines():
-            line = eval(line)
+            try:
+                line = eval(line)
+            except:
+                open_file.close()
+                if type(file_name) == list:
+                    os.remove("temp.wsy")
+                return False
             # Image.create_edit格式
             if line.keys() == {"image","mask","prompt","output"}:
                 continue
