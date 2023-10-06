@@ -78,7 +78,7 @@ def on_import_select(event):
     else:
         Message_box.config(state=tk.NORMAL)
         Message_box.delete(0.0, tk.END)
-        Message_box.insert(tk.END, "导入失败\n" "请检查文件格式是否与当前模式输入一致。\n")
+        Message_box.insert(tk.END, "导入失败\n" "请检查文件格式。\n")
         #设置字体为红色
         Message_box.tag_add("tag1", "1.0", "end")
         Message_box.tag_config("tag1", foreground="red")#设置tag1的字体颜色为红色
@@ -89,7 +89,7 @@ def on_import_select(event):
 
 # -----------------------------------------------------------------------------------#
 filemenu_file = tk.Menu(menubar, tearoff=0)
-menubar.add_cascade(label="文件", menu=filemenu_file)
+#menubar.add_cascade(label="文件", menu=filemenu_file)
 file_com = tk.StringVar()
 filemenu_file.add_command(label="打开", command=lambda: open_file())
 filemenu_file.add_command(label="保存", command=lambda: save_file())

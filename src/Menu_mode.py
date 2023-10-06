@@ -2,7 +2,7 @@ from windows import *
 # -----------------------------------------------------------------------------------#
 # 创建一个菜单
 filemenu_mode = tk.Menu(menubar, tearoff=0)
-menubar.add_cascade(label="模式 ", menu=filemenu_mode)
+#menubar.add_cascade(label="模式 ", menu=filemenu_mode)
 # -----------------------------------------------------------------------------------#
 selected_mode = tk.StringVar()
 selected_mode.set("ChatCompletion")

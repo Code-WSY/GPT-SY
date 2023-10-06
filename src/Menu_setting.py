@@ -99,18 +99,18 @@ selected_setting_color_fg_Input_box.set(colors[5])
 
 
 # 创建一个菜单
-menu_setting = tk.Menu(menubar, tearoff=0)
+filemenu_setting = tk.Menu(menubar, tearoff=0)
 # 将菜单添加到菜单栏
-menubar.add_cascade(label="外观", menu=menu_setting)
+#menubar.add_cascade(label="外观", menu=filemenu_setting)
 
 #创建三个菜单：字体，字号，颜色
-menu_setting_font = tk.Menu(menu_setting, tearoff=0)
-menu_setting_size = tk.Menu(menu_setting, tearoff=0)
-menu_setting_color = tk.Menu(menu_setting, tearoff=0)
+menu_setting_font = tk.Menu(filemenu_setting, tearoff=0)
+menu_setting_size = tk.Menu(filemenu_setting, tearoff=0)
+menu_setting_color = tk.Menu(filemenu_setting, tearoff=0)
 #将三个菜单添加到setting
-menu_setting.add_cascade(label="字体", menu=menu_setting_font)
-menu_setting.add_cascade(label="字号", menu=menu_setting_size)
-menu_setting.add_cascade(label="颜色", menu=menu_setting_color)
+filemenu_setting.add_cascade(label="字体", menu=menu_setting_font)
+filemenu_setting.add_cascade(label="字号", menu=menu_setting_size)
+filemenu_setting.add_cascade(label="颜色", menu=menu_setting_color)
 
 # ------------------------------字体-------------------------------------------------#
 #在字体菜单中添加子菜单:对话框，输入框，消息框

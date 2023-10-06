@@ -4,10 +4,21 @@ from Bottom_Submit_ChatCompletion import *
 from Bottom_Submit_Completion import *
 from Bottom_Submit_Edit import *
 from Bottom_Submit_Embeding import *
+from Menu_file import *
+from Menu_clear import *
+from Menu_setting import *
+from Menu_mode import *
 """
 设计：
     所有的UI设计都在这里
 """
+#菜单栏：
+# -----------------------------------------------------------------------------------#
+menubar.add_cascade(label="文件", menu=filemenu_file)
+menubar.add_cascade(label="模式", menu=filemenu_mode)
+menubar.add_cascade(label="清空", menu=filemenu_clear)
+menubar.add_cascade(label="设置", menu=filemenu_setting)
+
 # ----------------------------------------------------------------------------------#
 # ------------------------------------设计排列---------------------------------------#
 # ----------------------------------------------------------------------------------#

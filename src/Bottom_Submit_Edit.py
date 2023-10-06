@@ -9,9 +9,11 @@ from ask_GPT import *
 def check_and_sendGPT_Edit(text, temperature, max_token, selected_model, selected_prompt_title,
                       selected_mode
                       ):
-        #弹出窗口输入要
+        #弹出窗口
+
         instructions="输入要求"
         instruction=askstring("要求", instructions)
+
         add_chat(instruction, chat_history[selected_mode], selected_mode, "system")
         add_chat(text, chat_history[selected_mode], selected_mode, "user")
         # 交给GPT回答

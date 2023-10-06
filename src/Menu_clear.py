@@ -17,7 +17,7 @@ def clear_mode_history():
 
 # -----------------------------------------------------------------------------------#
 filemenu_clear = tk.Menu(menubar, tearoff=0)
-menubar.add_cascade(label="清空", menu=filemenu_clear)
+#menubar.add_cascade(label="清空", menu=filemenu_clear)
 clear_com = tk.StringVar()
 filemenu_clear.add_command(label="清空对话框", command=lambda: clear_display())
 filemenu_clear.add_command(label="清空对话记录", command=lambda: clear_mode_history())

@@ -1,10 +1,6 @@
 # 执行显示菜单,不能删除
-from Menu_file import *
-from Menu_clear import *
-from UI import * #
-from Menu_setting import *
+from UI import *
 # -----------------------------------------------------------------------------------#
-
 # 打开文件
 try:
     # 登录
