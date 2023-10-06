@@ -1,14 +1,9 @@
 from tkinter.ttk import Combobox
-
 from windows import *
-from tkinter import simpledialog
 import openai
 import os
 from Box_Message import Message_box
-
 login_file_path = "../API_KEY/API_KEY"
-
-
 def Latest_API_KEY():
     # 读取../API_KEY/API_KEY
     try:
@@ -55,7 +50,6 @@ def Reset_API_KEY():
 
     login = tk.Tk()
     login.title("Login")
-    login.geometry("300x200")
     api_key_label = tk.Label(login, text="API_KEY:")
     api_key_entry = tk.Entry(login)
     api_base_label = tk.Label(login, text="API_BASE:")
