@@ -1,10 +1,9 @@
-from UI import *
 from Box_Dialog import *
-from Box_Message import *
 from Box_Input import *
-
-
-
+from Cbox_Model import *
+from Cbox_Prompt import *
+from Box_Message import *
+from Menu_setting import *
 # -----------------------------------------------------------------------------------#
 # -----------------------------------------------------------------------------------#
 def reset_winsize():
@@ -48,9 +47,6 @@ def reset_winsize():
     # 6
     # 更新窗口
     window.update()
-
-
-filemenu_winsize = tk.Menu(menubar, tearoff=0)
 max_scale=200
 min_scale=20
 step=10

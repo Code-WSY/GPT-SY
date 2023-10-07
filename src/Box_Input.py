@@ -33,7 +33,7 @@ max_tokens_label.config(font=entry_font)
 
 max_tokens_box.config(font=entry_font)
 max_tokens_box.config(background=entry_colors[6], foreground=entry_colors[7])
-max_tokens_box.insert(0, "50")
+max_tokens_box.insert(0, "500")
 # 右对齐
 temperature_label.config(anchor=tk.E)
 max_tokens_label.config(anchor=tk.E)

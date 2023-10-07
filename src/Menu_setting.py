@@ -107,11 +107,12 @@ filemenu_setting = tk.Menu(menubar, tearoff=0)
 menu_setting_font = tk.Menu(filemenu_setting, tearoff=0)
 menu_setting_size = tk.Menu(filemenu_setting, tearoff=0)
 menu_setting_color = tk.Menu(filemenu_setting, tearoff=0)
+filemenu_winsize = tk.Menu(menubar, tearoff=0)
 #将三个菜单添加到setting
+filemenu_setting.add_cascade(label="窗口大小", menu=filemenu_winsize)
 filemenu_setting.add_cascade(label="字体", menu=menu_setting_font)
 filemenu_setting.add_cascade(label="字号", menu=menu_setting_size)
 filemenu_setting.add_cascade(label="颜色", menu=menu_setting_color)
-
 # ------------------------------字体-------------------------------------------------#
 #在字体菜单中添加子菜单:对话框，输入框，消息框
 menu_setting_font_Dialog_box = tk.Menu(menu_setting_font, tearoff=0)

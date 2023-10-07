@@ -20,10 +20,10 @@ from Menu_winsize import *
 menubar.add_cascade(label="文件", menu=filemenu_file)
 menubar.add_cascade(label="模式", menu=filemenu_mode)
 menubar.add_cascade(label="清空", menu=filemenu_clear)
-menubar.add_cascade(label="设置", menu=filemenu_setting)
 menubar.add_cascade(label="登录", menu=filemenu_login)
 menubar.add_cascade(label="引擎", menu=filemenu_engine)
-menubar.add_cascade(label="大小",menu=filemenu_winsize)
+menubar.add_cascade(label="外观", menu=filemenu_setting)
+# -----------------------------------------------------------------------------------#
 
 
 
