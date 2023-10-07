@@ -4,6 +4,7 @@ import openai
 import os
 from Box_Message import Message_box
 login_file_path = "../API_KEY/API_KEY"
+
 def Latest_API_KEY():
     # 读取../API_KEY/API_KEY
     try:
@@ -25,7 +26,7 @@ def Latest_API_KEY():
     # 显示
     Message_box.config(state=tk.NORMAL)
     Message_box.delete(0.0, tk.END)
-    Message_box.insert(tk.END, "已登陆\n")
+    Message_box.insert(tk.END, "已登陆最新API_KEY\n"+"API note: "+api["API_NAME"]+"\n")
     Message_box.config(state=tk.DISABLED)
 
 
@@ -45,10 +46,10 @@ def Reset_API_KEY():
         # 显示
         Message_box.config(state=tk.NORMAL)
         Message_box.delete(0.0, tk.END)
-        Message_box.insert(tk.END, "已登陆\n")
+        Message_box.insert(tk.END, "已登陆\n"+"API note: "+note+"\n")
         Message_box.config(state=tk.DISABLED)
 
-    login = tk.Tk()
+    login = tk.Toplevel() # 创建一个子窗口
     login.title("Login")
     api_key_label = tk.Label(login, text="API_KEY:")
     api_key_entry = tk.Entry(login)
@@ -71,14 +72,49 @@ def Reset_API_KEY():
 def choose_API_KEY():
     # 读取../API_KEY/API_KEY
     try:
-        with open(login_file_path, "r", encoding="utf-8") as f:
-            api_key = f.read()
+        open(login_file_path, "r", encoding="utf-8")
     except:
         Message_box.config(state=tk.NORMAL)
         Message_box.delete(0.0, tk.END)
         Message_box.insert(tk.END, "API_KEY文件不存在\n")
         Message_box.config(state=tk.DISABLED)
-        return
+
+    choosekey = tk.Toplevel()  # 创建一个子窗口
+    choosekey.title("选择 API_KEY")
+    choosekey_var = tk.StringVar()
+    # 下拉框
+    api_name_option = Combobox(choosekey, values=api_name, state="readonly",textvariable=choosekey_var)
+    def confirm():
+        openai.api_key = api_key_list[api_name.index(choosekey_var.get())]
+        openai.api_base = api_base_list[api_name.index(choosekey_var.get())]
+        # 显示
+        Message_box.config(state=tk.NORMAL)
+        Message_box.delete(0.0, tk.END)
+        Message_box.insert(tk.END, "已登陆\n" + "API note: " + api_name_option.get() + "\n")
+        Message_box.config(state=tk.DISABLED) \
+        # 关闭
+        choosekey.destroy()
+
+    # 确认按钮
+    confirm_button = tk.Button(choosekey, text="确认", command=lambda: confirm())
+    # 下拉框变量
+    api_name_option.pack()
+    confirm_button.pack()
+
+
+
+# -----------------------------------------------------------------------------------#
+# 创建一个菜单
+filemenu_login = tk.Menu(menubar, tearoff=0)
+# 设置单选
+filemenu_login.add_command(label="Latest API_KEY", command=lambda: Latest_API_KEY())
+filemenu_login.add_command(label="Reset API_KEY", command=lambda: Reset_API_KEY())
+filemenu_login.add_command(label="Choose API_KEY", command=lambda: choose_API_KEY())
+
+# -----------------------------------------------------------------------------------#
+if os.path.exists(login_file_path):
+    with open(login_file_path, "r", encoding="utf-8") as f:
+        api_key = f.read()
     # 读取每行数据中的API_NAME
     api_name = []
     api_key_list = []
@@ -88,54 +124,22 @@ def choose_API_KEY():
             api_name.append(eval(i)["API_NAME"])
             api_key_list.append(eval(i)["API_KEY"])
             api_base_list.append(eval(i)["API_BASE"])
-    # 弹出选择窗口
-    choosekey = tk.Tk()
-    choosekey.title("Choose API_KEY")
-    api_name_var = tk.StringVar()
-    api_name_var.set(api_name[0])
-    # 下拉框
-    api_name_option = Combobox(
-        choosekey, values=api_name
-        , textvariable=api_name_var, state="readonly", background=colors[2], foreground=colors[3],
-    )
-    api_name_option.pack()
-
-    # 确认按钮
-    def confirm():
-        # 读取
-        openai.api_key = api_key_list[api_name.index(api_name_var.get())]
-        openai.api_base = api_base_list[api_name.index(api_name_var.get())]
-        # 关闭
-        choosekey.destroy()
-        # 显示
-        Message_box.config(state=tk.NORMAL)
-        Message_box.delete(0.0, tk.END)
-        Message_box.insert(tk.END, "已登陆\n")
-        Message_box.config(state=tk.DISABLED)
-    confirm_button = tk.Button(choosekey, text="确定", command=lambda: confirm())
-    confirm_button.pack()
-
-
-# -----------------------------------------------------------------------------------#
-
-# 创建一个菜单
-filemenu_login = tk.Menu(menubar, tearoff=0)
-# 设置单选
-filemenu_login.add_command(label="Latest API_KEY", command=lambda: Latest_API_KEY())
-filemenu_login.add_command(label="Reset API_KEY", command=lambda: Reset_API_KEY())
-filemenu_login.add_command(label="Choose API_KEY", command=lambda: choose_API_KEY())
-# -----------------------------------------------------------------------------------#
-if os.path.exists(login_file_path):
-    with open(login_file_path, "r", encoding="utf-8") as f:
-        api_key = f.read()
-    api_key = api_key.split("\n")[-1]
+    api_key_init = api_key.split("\n")[0]
     # 转换为字典
-    api = eval(api_key)
+    api = eval(api_key_init)
     # 读取
     openai.api_key = api["API_KEY"]
     openai.api_base = api["API_BASE"]
     # 显示
     Message_box.config(state=tk.NORMAL)
     Message_box.delete(0.0, tk.END)
-    Message_box.insert(tk.END, "已登陆\n")
+    Message_box.insert(tk.END, "已登录 \nAPI note: " + api["API_NAME"] + "\n")
     Message_box.config(state=tk.DISABLED)
+else:
+    Message_box.config(state=tk.NORMAL)
+    Message_box.delete(0.0, tk.END)
+    Message_box.insert(tk.END, "未登录:\nAPI_KEY文件不存在\n")
+    Message_box.config(state=tk.DISABLED)
+
+if __name__=="__main__":
+    pass
