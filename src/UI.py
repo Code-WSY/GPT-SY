@@ -18,14 +18,12 @@ from Menu_winsize import *
 #菜单栏：
 # -----------------------------------------------------------------------------------#
 menubar.add_cascade(label="文件", menu=filemenu_file)
-menubar.add_cascade(label="模式", menu=filemenu_mode)
-menubar.add_cascade(label="清空", menu=filemenu_clear)
 menubar.add_cascade(label="登录", menu=filemenu_login)
-menubar.add_cascade(label="引擎", menu=filemenu_engine)
+menubar.add_cascade(label="模式", menu=filemenu_mode)
+menubar.add_cascade(label="模型", menu=filemenu_engine)
 menubar.add_cascade(label="外观", menu=filemenu_setting)
+menubar.add_cascade(label="清空", menu=filemenu_clear)
 # -----------------------------------------------------------------------------------#
-
-
 
 # ----------------------------------------------------------------------------------#
 # ------------------------------------设计排列---------------------------------------#
@@ -93,7 +91,9 @@ def change_UI():
 
 
 init_UI()
+# ----------------------------------------------------------------------------------#
 # trace:当变量改变时，执行函数
 selected_mode.trace("w", lambda *args: change_UI())
+
 if __name__ == "__main__":
     window.mainloop()

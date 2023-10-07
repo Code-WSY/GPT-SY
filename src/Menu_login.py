@@ -73,6 +73,7 @@ def Reset_API_KEY():
         Message_box.config(state=tk.DISABLED)
 
     login = tk.Toplevel() # 创建一个子窗口
+    login.geometry("300x200")
     login.title("Login")
     api_key_label = tk.Label(login, text="API_KEY(*):")
     api_key_entry = tk.Entry(login)
@@ -117,7 +118,10 @@ def choose_API_KEY():
         Message_box.config(state=tk.DISABLED)
 
     choosekey = tk.Toplevel()  # 创建一个子窗口
+    choosekey.geometry("300x100")
     choosekey.title("选择 API_KEY")
+    #创建标签
+    Label_choose=tk.Label(choosekey,text="选择API_KEY")
     choosekey_var = tk.StringVar()
     # 下拉框
     api_name_option = Combobox(choosekey, values=api_name_list_choose, state="readonly",textvariable=choosekey_var)
@@ -135,6 +139,7 @@ def choose_API_KEY():
     # 确认按钮
     confirm_button = tk.Button(choosekey, text="确认", command=lambda: confirm())
     # 下拉框变量
+    Label_choose.pack()
     api_name_option.pack()
     confirm_button.pack()
     choosekey.mainloop()
@@ -189,16 +194,20 @@ def Delete_API_KEY():
         Deletekey.destroy()
 
     Deletekey = tk.Toplevel()  # 创建一个子窗口
+    Deletekey.geometry("300x100")
     Deletekey.title("选择 API_KEY")
+    # 创建标签
+    Label_Delete = tk.Label(Deletekey, text="选择API_KEY")
     choosekey_var = tk.StringVar()
     # 下拉框
     api_name_option = Combobox(Deletekey, values=api_name_delete, state="readonly", textvariable=choosekey_var)
     # 确认按钮
     confirm_button = tk.Button(Deletekey, text="删除", command=lambda: delete())
-    # 下拉框变量
+
+    Label_Delete.pack()
     api_name_option.pack()
     confirm_button.pack()
-    Deletekey.mainloop() # 进入消息循环
+    Deletekey.mainloop()
 
 
 
@@ -207,7 +216,7 @@ def Delete_API_KEY():
 filemenu_login = tk.Menu(menubar, tearoff=0)
 # 设置单选
 filemenu_login.add_command(label="Latest API_KEY", command=lambda: Latest_API_KEY())
-filemenu_login.add_command(label="Reset API_KEY", command=lambda: Reset_API_KEY())
+filemenu_login.add_command(label="Create API_KEY", command=lambda: Reset_API_KEY())
 filemenu_login.add_command(label="Choose API_KEY", command=lambda: choose_API_KEY())
 filemenu_login.add_separator()
 filemenu_login.add_command(label="Delete API_KEY", command=lambda: Delete_API_KEY())
