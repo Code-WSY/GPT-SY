@@ -112,12 +112,12 @@
     },
     {
         "model":"text-davinci-edit-001",
-        "description":"- 描述：GPT3.5模型，与标准模型具有相同的功能，但上下文大小增加了4倍。\n- Max_tokens：4097 tokens\n- 训练数据：截至2021年9月\n",
+        "description":"- 描述：GPT-3的另一个变体，主要用于文本的编辑和改写。\n- Max_tokens：4097 tokens\n- 训练数据：截至2021年9月\n",
         "use_in":"Edit"
     },
     {
         "model":"code-davinci-edit-001",
-        "description":"- 描述：GPT3.5模型，与标准模型具有相同的功能，但上下文大小增加了4倍。\n- Max_tokens：4097 tokens\n- 训练数据：截至2021年9月\n",
+        "description":"- 描述：GPT-3的一个变体，专门用于代码的编辑和完善。\n- Max_tokens：4097 tokens\n- 训练数据：截至2021年9月\n",
         "use_in":"Edit"
     },
     {
