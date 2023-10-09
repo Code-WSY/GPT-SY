@@ -1,115 +1,76 @@
-# GPT-SY
+# 更新：GPT-SY的一些改进
 
 <img src="http://sy0316.oss-cn-hangzhou.aliyuncs.com/img/logo_gptsy.png" alt="logo" style="zoom:33%;" />
 
-新版更新：
+因为之前写的GUI还是太粗糙了，所以进行了许多地方的改进和优化。
 
-1. 将GPT回答的输出改为流式传输，好处在于**按需生成文本，而不需要等到整个文本都生成完毕**。这对于处理**大型文本生成任务**来说非常有用，因为它可以降低内存占用和网络带宽使用，并且可以更快地获得部分结果。
-2. 优化默认配色，并增加了字体、颜色、字号的修改设置。
-3. 解决了提出问题的用户。
+源代码地址：
 
-最近趁着国庆假期，写了一个**GPT**的桌面端应用程序，目前主要开发了如下功能：
-
-1. **GPT模型集成**：将目前已有的OpenAI的GPT模型（免费的）集成到了程序中，可自行选择模型。
-2. **参数调整**：提供一些参数调整的选项，如温度和输出长度参数。可以根据自己的需求调整生成文本的多样性和长度。
-3. **提示库**：收集了目前流行和常用的提示库，并将其集成到应用程序中，以便对GPT更好的提问，从而获取最佳答案。
-4. **保存对话记录**：可以将历史对话保存，并自动生成可供预训练的文件格式。
-5. **支持预训练模式**：允许通过导入对话来生成新对话。
+[Code-WSY/GPT-SY: A desktop application for GPT. (github.com)](https://github.com/Code-WSY/GPT-SY)
 
 ## 安装
 
 ### 安装`Openai`库
 
-使用前请先安装`opneai`库：
+使用前请先保证自己的`python`环境安装了`opneai`库：
 
-```python
+```bash
 pip install openai
 ```
 
-### API KEY
+## 启动
 
-除了安装好`openai`的Python库之外，还需要有一个`API KEY`，一般注册`Openai`账号即可免费获得5美元的额度，足够日常使用。
+直接运行`src/Main.py`启动界面：
 
-存放的方式是在API_KEY文件夹下新建一个`API_KEY`文本（无后缀），将`API KEY`复制到第一行，每次运行会自动登录。
+<img src="http://sy0316.oss-cn-hangzhou.aliyuncs.com/img/image-20231009173520955.png" alt="启动界面" style="zoom:50%;" />
 
-## 运行
+## 登录
 
-直接运行`src/Main.py`文件。
+<img src="http://sy0316.oss-cn-hangzhou.aliyuncs.com/img/image-20231009173612885.png" alt="image-20231009173612885" style="zoom:50%;" />
 
-## 模式选择
+- `Latest API KEY`：直接登录最新添加的API KEY。
 
-### Prompt-based
+- `Create API KEY`：添加自己的API KEY。
 
-在这种模式下，通过选择`功能`选项，会先为GPT提供一个系统请求（prompt），然后再在输入框输入需要进行的任务内容。GPT会根据提示理解意图，并生成相应的回答。
+  - API_KEY：必填。
+  - API_BASE：可选，默认官方：`https://api.openai.com/v1`地址，如果采用其他中转，需修改此处。
+  - API_note：对该API的备注信息。可选，默认是创建时间。
 
-<img src="C:\Users\WangSuyun\AppData\Roaming\Typora\typora-user-images\image-20231005212509480.png" alt="界面风格" style="zoom:50%;" />
+  ![API 创建](http://sy0316.oss-cn-hangzhou.aliyuncs.com/img/image-20231009175403839.png)
 
+- `Choose API KEY`：从之前添加的API KEY选择账号登录。
 
+- `Delete API KEY`：删除之前添加过得API KEY。
 
-注意：
+## 模式
 
-1. 这是默认模式。
+![模式选项](http://sy0316.oss-cn-hangzhou.aliyuncs.com/img/image-20231009173945946.png)
 
-2. 如果在对话中途切换功能，对于`ChatCompletion`，会先将`system`的`prompt`提交，再将用户输入的文本提交。
+- `ChatCompletion`：用于进行对话式交互的模式。在这种模式下，可以提出一个或多个问题、陈述或指令，模型提供相应的响应。ChatCompletion模式旨在模拟真实对话中的交互，因此模型的响应通常会考虑到上下文，并且可以**基于之前的对话进行连贯的回复**。
+- `Completion`：单向生成文本的模式。在这种模式下，提供一个初始的文本片段，然后模型将根据这个片段生成一个完整的补全文本。Completion模式通常用于**生成文章、段落、故事、代码**等**长篇文本**。
+- `Edit`：Edit模式是对现有文本进行编辑和修改**。在这种模式下，您提供一个初始的文本片段，并提供模型对其进行修改或编辑的建议。模型将尝试根据您的指示对文本进行修改，并生成一个经过编辑的版本。
+- `Embedding`：将文本转换为向量表示的模式。在这种模式下，提供一个文本片段，然后模型将返回一个**向量**，该向量表示了该文本的语义信息。这种嵌入表示可以用于计算文本之间的相似性、进行**聚类分析、训练机器学习**模型等各种自然语言处理任务。
 
-3. 对于`Completion`，由于是无记忆的，并且`completion`非空，因此会直接在历史记录加入对应功能的`prompt`：
+## 模型
 
-   ```json
-   {"prompt": prompt+input, "completion": ""}
-   ```
+<img src="http://sy0316.oss-cn-hangzhou.aliyuncs.com/img/image-20231009174705360.png" alt="可用模型" style="zoom:50%;" />
 
-   具体参加`is_prompt_changed.py`。
+- **可用引擎**：会输出该API目前可用的`engine`。
 
-   
+## 外观
 
-### Fine-tuning
+<img src="http://sy0316.oss-cn-hangzhou.aliyuncs.com/img/image-20231009174819665.png" alt="外观" style="zoom:50%;" />
 
-<img src="http://sy0316.oss-cn-hangzhou.aliyuncs.com/img/image-20231005212700689.png" alt="界面" style="zoom:50%;" />
-
-在这种模式下，可以将先前的对话导入，并继续对话。这种模式利用了GPT已经在大规模文本数据上进行的预训练。通过将先前的对话作为输入，GPT可以根据之前的上下文来生成连贯的回复。这种模式适用于需要在现有对话基础上进行延续的场景。
-
-如果不导入文件直接进行对话，
-
-- 对于`ChatCompletion`,即为无任何提示词的对话。
-- 对于`Completion`，
-
-导入文件格式如下：
-
-```json
-{"role": "system", "content": Request}
-{"role": "user", "content": question1}
-{"role": "assistant", "content": answer1}
-{"role": "user", "content": question2}
-{"role": "assistant", "content": answer2}
-```
-
-**注意：**
-
-1. 导入文件后，历史对话记录将会被清空，GPT将不会记得之前的对话内容（主要针对`ChatCompletion`）
-2. 导入的文件对`Completion`对于的格式来说，没有意义，因为这是单文本对话，该形式的微调目前收费。
-3. **未导入文件不能进行对话。**
-
-## 模式切换
-
-- 从Fine-tunning切换到Prompt-based，
-  - 对于`ChatCompletion`，会根据选择的功能加入`system`语句并继续对话。
-  - 对于`Completion`，由于是单文本对话，因此只是导入了历史记录，对话无影响。
-
-- 从Prompt-based切换到Fine-tunning，
-  - 对于`ChatCompletion`实际就是之前历史对话的延续，不会加入`system`语句。
-  - 对于`Completion`，为无promote对话模式。
+用于修改当前界面的字体、字号、颜色和整体窗口大小。
 
 ## 清空
 
-### 清屏
+<img src="http://sy0316.oss-cn-hangzhou.aliyuncs.com/img/image-20231009174943424.png" alt="清空" style="zoom:50%;" />
 
-仅仅是清空输出屏幕，不会清除历史对话
+- **清屏**：清除对话窗口内容，但不清除历史记录。
+- **清空对话**：清空对话窗口信息和当前模式下的历史记录。
 
-### 清空历史对话
-
-会清空之前的对话内容，即消除GPT与你之间的对话记忆。
-
-## 参数控制
+## 文本生成参数
 
 ### 温度
 
@@ -119,25 +80,21 @@ pip install openai
 
 对应max_token参数，用于限制生成文本的长度。它指定了生成文本的最大标记数量。通过设置输出长度参数，可以控制生成文本的长度，以适应特定的应用场景或需求。
 
-## 文本导入
+### 模型
 
-如果有大段内容需要提交给GPT，可以通过`文件--→打开`，进行文本选择，内容将会导入到输入栏中。
+该下拉栏会显示当前模式下的可用模型，方便进行选择。
 
-目前仅支持文本格式导入。
+### 功能
 
-## 导出对话
+显示该模式下适用的提示库。
 
-如果希望将对话进行保存，可以通过`文件--→保存`，保存位置是`Chat_history`文件夹下，对话内容将保存为`jsonlines`的格式，方便下一次通过`Fine-tuning`模式导入。
+## 文件
 
-## 示例
+- **打开**：选择文本，自动导入到输入窗口中。
+- **保存**：保存当前模式下的历史对话记录（ChatLogs/）。
+- **另存为**：将保存内容另存到其他地方。
+- **导入历史记录**：将之前的对话记录导入到模型中，主要用于继续对话或者模型的预训练（通过修改历史对话内容实现）。
 
-<img src="http://sy0316.oss-cn-hangzhou.aliyuncs.com/img/image-20231005212939448.png" alt="image-20231005212939448" style="zoom:50%;" />
+## 其他改进
 
-在选择不同模型时，会提供该模型的基本信息：
-
-<img src="http://sy0316.oss-cn-hangzhou.aliyuncs.com/img/image-20231005213213261.png" alt="image-20231005213213261" style="zoom:50%;" />
-
-## 获取地址：
-
-[Code-WSY/GPT-SY: A desktop application for GPT. (github.com)](https://github.com/Code-WSY/GPT-SY)
-
+- 为了更好的实现对话响应和长文本输出，采用文本流方式进行输出，实时输出文本。
