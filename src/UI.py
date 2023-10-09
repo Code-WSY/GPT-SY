@@ -49,21 +49,32 @@ def init_UI():
     Input_box.grid(row=4, column=0, columnspan=4, sticky=tk.NSEW)
     # 6
     submit_button_ChatCompletion.grid(row=5, column=1, columnspan=2, sticky=tk.NSEW)
+    #绑定快捷键
+    window.bind('<Control-Return>', sumbit_text_ChatCompletion)
 
 def Completion_UI():
     submit_button_Completion.grid(row=5, column=1, columnspan=2, sticky=tk.NSEW)
+    #绑定快捷键
+    window.bind('<Control-Return>', sumbit_text_Completion)
+
 
 
 def ChatCompletion_UI():
     # 6
     submit_button_ChatCompletion.grid(row=5, column=1, columnspan=2, sticky=tk.NSEW)
+    #绑定快捷键
+    window.bind('<Control-Return>', sumbit_text_ChatCompletion)
 
 def Edit_UI():
     # 6
     submit_button_Edit.grid(row=5, column=1, columnspan=2, sticky=tk.NSEW)
+    #绑定快捷键
+    window.bind('<Control-Return>', sumbit_text_Edit)
 def Embedding_UI():
     # 6
     submit_button_Embeding.grid(row=5, column=1, columnspan=2, sticky=tk.NSEW)
+    #绑定快捷键
+    window.bind('<Control-Return>', sumbit_text_Embeding)
 
 def foget_all():
     submit_button_Completion.grid_forget()
