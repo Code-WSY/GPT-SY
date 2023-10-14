@@ -48,7 +48,8 @@ def init_UI():
     # 5
     Input_box.grid(row=4, column=0, columnspan=4, sticky=tk.NSEW)
     # 6
-    submit_button_ChatCompletion.grid(row=5, column=1, columnspan=2, sticky=tk.NSEW)
+    #submit_button_ChatCompletion.grid(row=5, column=1, columnspan=2, sticky=tk.NSEW)
+    submit_button_Completion.grid(row=5, column=1, columnspan=2, sticky=tk.NSEW)
     #绑定快捷键
     window.bind('<Control-Return>', sumbit_text_ChatCompletion)
 
